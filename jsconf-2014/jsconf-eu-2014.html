@@ -1,0 +1,1655 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /><style type='text/css'>
+body {
+  font-family: 'Helvetica';
+  letter-spacing:-5px;
+  background:#000;
+  background-size:100%;
+  color:#fff;
+  margin:0;
+  padding:0;
+  font-weight:bold;
+}
+
+h1, h2, h3, p {
+  margin:0;
+}
+
+em, a {
+  font-style:normal;
+  color:#8dbd0c;
+}
+
+a {
+  background: #34d0e7;
+  color:#000;
+  text-decoration:none;
+}
+
+img {
+  width:100%;
+}
+
+div {
+  cursor:pointer;
+  cursor:hand;
+  position:absolute;
+  top:0px;
+  left:0px;
+  padding:75px;
+  line-height:97%;
+}
+
+div.center {
+  text-align:center;
+}
+
+div.imageText {
+  text-shadow:0px 0px 5px rgba(0,0,0,0.2);
+}
+
+.troll {
+  background-image: url(http://img1.wikia.nocookie.net/__cb20121111062145/adventuretimewithfinnandjake/images/3/3e/Troll_Face.png);
+  background-size: 200px;
+  background-repeat: no-repeat;
+  background-position: 30px 190px;
+  -webkit-animation-name: trollboots;
+  -webkit-animation-duration: 0.8s;
+  -webkit-transform-origin:50% 50%;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards;
+
+}
+
+.troll-static {
+  background-image: url(http://img1.wikia.nocookie.net/__cb20121111062145/adventuretimewithfinnandjake/images/3/3e/Troll_Face.png);
+  background-size: 200px;
+  background-repeat: no-repeat;
+  background-position: 30px 90px;
+}
+
+.fade-out {
+  -webkit-animation-name: fadeoutboots;
+  -webkit-animation-duration: 0.8s;
+  -webkit-transform-origin:50% 50%;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fadeoutboots {
+  100% {opacity: 0;}
+}
+
+.fade-in {
+  opacity: 0;
+  -webkit-animation-name: fadeinboots;
+  -webkit-animation-duration: 0.8s;
+  -webkit-transform-origin:50% 50%;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fadeinboots {
+  100% {opacity: 1;}
+}
+
+
+@-webkit-keyframes trollboots {
+  100% {background-position: 30px 90px;}
+}
+
+.piracy {
+  background-image: url(http://cdn.theatlantic.com/newsroom/img/posts/RTXBIUW.jpg);
+}
+
+body.canvas .slide {
+  position: absolute;
+  top: 50px;
+  font-size: 0 !important;
+}
+
+.slide {
+  top: 100px;
+  left: 150px;
+//  position: absolute;
+//  padding-top: 100px;
+}
+
+.slide span {
+  display: block;
+}
+
+.server {
+  border: 25px solid white;
+  font-size: 100px;
+  padding: 150px 50px;
+  position: absolute;
+}
+
+.peer, .piece {
+  font-size: 80px;
+  position: absolute;
+}
+
+
+.peer .text {
+  display: block;
+  border: 10px solid white;
+  text-align: center;
+  width: 250px;
+  padding: 80px 0;
+}
+
+.piece .text {
+  font-size: 80px;
+  color: white;
+  display: block;
+  width: 300px;
+}
+
+.peer .right {
+  position: relative;
+  top: 97px;
+  left: 300px;
+  z-index: 100;
+}
+
+.peer .left {
+  position: relative;
+  top: 97px;
+  left: -110px;
+  z-index: 100;
+}
+
+.peer .up {
+  position: relative;
+  top: -50px;
+  left: 100px;
+  z-index: 100;
+}
+
+.peer .down {
+  position: relative;
+  top: 235px;
+  left: 100px;
+  z-index: 100;
+}
+
+@-webkit-keyframes explodeboots {
+  0% { -webkit-transform: scale(1) rotate(0deg); opacity: 1; }
+  100% { -webkit-transform: scale(3) rotate(400deg); opacity: 0; }
+}
+
+@-webkit-keyframes spaceboots {
+  0% { -webkit-transform: translate(2px, 1px) rotate(0deg); }
+  10% { -webkit-transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { -webkit-transform: translate(-3px, 0px) rotate(1deg); }
+  30% { -webkit-transform: translate(0px, 2px) rotate(0deg); }
+  40% { -webkit-transform: translate(1px, -1px) rotate(1deg); }
+  50% { -webkit-transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { -webkit-transform: translate(-3px, 1px) rotate(0deg); }
+  70% { -webkit-transform: translate(2px, 1px) rotate(-1deg); }
+  80% { -webkit-transform: translate(-1px, -1px) rotate(1deg); }
+  90% { -webkit-transform: translate(2px, 2px) rotate(0deg); }
+  100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.shake {
+  -webkit-animation-name: spaceboots;
+  -webkit-animation-duration: 0.8s;
+  -webkit-transform-origin:50% 50%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  display:inline-block
+}
+
+@-webkit-keyframes more-spaceboots {
+  0% { -webkit-transform: translate(2px, 1px) rotate(0deg); }
+  10% { -webkit-transform: translate(-2px, -3px) rotate(-5deg); }
+  20% { -webkit-transform: translate(-4px, 0px) rotate(5deg); }
+  30% { -webkit-transform: translate(0px, 3px) rotate(0deg); }
+  40% { -webkit-transform: translate(2px, -2px) rotate(5deg); }
+  50% { -webkit-transform: translate(-2px, 3px) rotate(-5deg); }
+  60% { -webkit-transform: translate(-4px, 0px) rotate(0deg); }
+  70% { -webkit-transform: translate(3px, 0px) rotate(-5deg); }
+  80% { -webkit-transform: translate(-2px, -2px) rotate(5deg); }
+  90% { -webkit-transform: translate(3px, 3px) rotate(0deg); }
+  100% { -webkit-transform: translate(0px, -3px) rotate(-5deg); }
+}
+
+.more-shake {
+  -webkit-animation-name: more-spaceboots;
+  -webkit-animation-duration: 0.8s;
+  -webkit-transform-origin:50% 50%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  display:inline-block
+}
+
+.explode {
+  -webkit-animation-name: explodeboots;
+  -webkit-animation-duration: 0.8s;
+  -webkit-transform-origin:50% 50%;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards;
+  display:inline-block
+}
+
+@-webkit-keyframes streamboots {
+  0% { -webkit-transform: translate(0px, 0px); }
+  100% { -webkit-transform: translate(600px, 0px); }
+}
+
+@-webkit-keyframes streamboots-single {
+  0% { -webkit-transform: translate(0px, 0px); }
+  100% { -webkit-transform: translate(340px, 0px); }
+}
+
+.stream {
+  position: absolute;
+  width:140px;
+  height:20px;
+  overflow:hidden;
+}
+
+.stream.short {
+  width: 120px;
+}
+
+.stream.very-short {
+  width: 80px;
+}
+
+.dots {
+  width: 1000px;
+  margin-left: -600px;
+}
+
+.slow .dot {
+  -webkit-animation-duration: 10.0s !important;
+}
+
+.dot.hide {
+  visibility: hidden;
+}
+
+.dots.single {
+  width: 500px;
+  margin-left: -20px;
+}
+
+.dots.single .dot {
+  -webkit-animation-name: streamboots-single !important;
+  -webkit-animation-duration: 1.0s;
+}
+
+.dot {
+  -webkit-animation-name: streamboots;
+  -webkit-animation-duration: 5.0s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+  background-color: #8dbd0c;
+  float: left;
+}
+
+.flip-x {
+  transform: rotate(180deg);
+}
+
+.flip-y {
+  transform: rotate(90deg);
+}
+
+.piece .text {
+  height: 100px;
+}
+
+.text.subscript {
+  margin-left: 20px;
+}
+
+</style><script type='text/javascript'>
+window.onload = function() {
+    var s = document.getElementsByTagName('div'), ti;
+    if (!s) return;
+    big = { current: 0, forward: fwd, reverse: rev, go: go, length: s.length };
+    function go(n) {
+        big.current = n;
+        var i = 1e3, e = s[n], t = parseInt(e.dataset.timeToNext || 0, 10);
+        document.body.className = e.dataset.bodyclass || '';
+        for (var k = 0; k < s.length; k++) s[k].style.display = 'none';
+        e.style.display = 'inline';
+        e.style.fontSize = i + 'px';
+        if (e.firstChild && e.firstChild.nodeName === 'IMG') {
+            document.body.style.backgroundImage = 'url(' + e.firstChild.src + ')';
+            e.firstChild.style.display = 'none';
+            if ('classList' in e) e.classList.add('imageText');
+        } else {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundColor = e.style.backgroundColor;
+        }
+        if (ti !== undefined) window.clearInterval(ti);
+        if (t > 0) ti = window.setTimeout(fwd, (t * 1000));
+
+        if (e.getAttribute('data-font-size')) e.style.fontSize = e.getAttribute('data-font-size')+'px';
+        else {
+          while ((e.offsetWidth > window.innerWidth ||
+              e.offsetHeight > window.innerHeight) && i >= 0) {
+              e.style.fontSize = (i -= 2) + 'px';
+          }
+          e.setAttribute('data-font-size', i)
+        }
+        e.style.marginTop = ((window.innerHeight - e.offsetHeight) / 2) + 'px';
+        if (window.location.hash !== n) window.location.hash = n;
+        document.title = e.textContent || e.innerText;
+    }
+    document.onclick = function() { go(++big.current % (s.length)); };
+    function fwd() { go(Math.min(s.length - 1, ++big.current)); }
+    function rev() { go(Math.max(0, --big.current)); }
+    document.onkeydown = function(e) {
+        if (e.which === 39 || e.which === 34 || e.which === 40) fwd();
+        if (e.which === 37 || e.which === 33 || e.which === 38) rev();
+    };
+    document.ontouchstart = function(e) {
+        var x0 = e.changedTouches[0].pageX;
+        document.ontouchend = function(e) {
+            var x1 = e.changedTouches[0].pageX;
+            if (x1 - x0 < 0) fwd();
+            if (x1 - x0 > 0) rev();
+        };
+    };
+    function parse_hash() {
+        return Math.max(Math.min(s.length - 1,
+            parseInt(window.location.hash.substring(1), 10)), 0);
+    }
+    if (window.location.hash) big.current = parse_hash() || big.current;
+    window.onhashchange = function() {
+        var c = parse_hash();
+        if (c !== big.current) go(c);
+    };
+    go(big.current);
+};
+</script></head><body>
+<div>Mathias Buus <em>@mafintosh</em></div>
+
+<div><em>javascript</em> and <em>bittorrent</em></div>
+
+<div>... and <em>MAD SCIENCE</em>!</div>
+
+<div>
+  how does <em>bittorrent</em> work?
+</div>
+
+<div>
+  when people think of <em>bittorent</em> they usually think:
+</div>
+
+<div data-bodyclass="piracy">
+  PIRACY
+</div>
+
+<div>
+  bittorent is <em>way</em> more than this
+</div>
+
+<div>
+  <em>normal</em> way of fetching <em>content</em> online
+</div>
+
+<div class="slide" data-bodyclass="canvas">
+  <span style="position: absolute; top: 10px; left: 250px">
+    <span class="server" style="top: -150px;">
+      <em>server</em>
+    </span>
+
+    <span class="stream" style="top: 0px; left: 440px; top: 20px;">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="top: -65px; left:600px;">
+      <em class="text">client</em>
+    </span>
+  </span>
+</div>
+
+<div>
+  nice and simple
+</div>
+
+<div>
+  what happens when <em>1,000,000</em> clients arrive
+</div>
+
+<!-- ←→↓↑ -->
+
+<div class="slide" data-bodyclass="canvas">
+  <span style="position: absolute; top: 0px; left: 30px">
+    <span class="stream very-short flip-y" style="top: 0px; left: 520px; top: 140px;">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 380px; top: 200px;">
+      <em class="text">client</em>
+    </span>
+
+    <span class="stream very-short flip-y" style="top: 0px; left: 720px; top: 140px;">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 680px; top: 200px;">
+      <em class="text">client</em>
+    </span>
+
+    <span class="stream short flip-x" style="top: 0px; left: 320px; top: -165px;">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 40px; top: -250px">
+      <em class="text">client</em>
+    </span>
+
+    <span class="stream short flip-x" style="top: 0px; left: 320px; top: 50px;">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 40px; top: -30px">
+      <em class="text">client</em>
+    </span>
+
+    <span class="stream short" style="top: 0px; left: 880px; top: -165px;">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 1010px; top: -250px">
+      <em class="text">client</em>
+    </span>
+
+    <span class="stream short" style="top: 0px; left: 880px; top: 50px;">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 1010px; top: -30px">
+      <em class="text">client</em>
+    </span>
+
+    <span class="server shake" style="top: -250px; left: 450px" class="shake">
+      <em>server</em>
+    </span>
+  </span>
+</div>
+
+<div class="slide" data-bodyclass="canvas">
+  <span style="position: absolute; top: 0px; left: 30px">
+    <span class="stream very-short flip-y" style="top: 0px; left: 520px; top: 140px;">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 380px; top: 200px;">
+      <em class="text">client</em>
+    </span>
+
+    <span class="stream very-short flip-y" style="top: 0px; left: 720px; top: 140px;">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 680px; top: 200px;">
+      <em class="text">client</em>
+    </span>
+
+    <span class="stream short flip-x" style="top: 0px; left: 320px; top: -165px;">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 40px; top: -250px">
+      <em class="text">client</em>
+    </span>
+
+    <span class="stream short flip-x" style="top: 0px; left: 320px; top: 50px;">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 40px; top: -30px">
+      <em class="text">client</em>
+    </span>
+
+    <span class="stream short" style="top: 0px; left: 880px; top: -165px;">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 1010px; top: -250px">
+      <em class="text">client</em>
+    </span>
+
+    <span class="stream short" style="top: 0px; left: 880px; top: 50px;">
+      <span class="dots">
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 1010px; top: -30px">
+      <em class="text">client</em>
+    </span>
+
+    <span class="server more-shake" style="top: -250px; left: 450px" class="shake">
+      <em>server</em>
+    </span>
+  </span>
+</div>
+
+<div class="slide" data-bodyclass="canvas">
+  <span style="position: absolute; top: 0px; left: 30px">
+    <span class="stream very-short flip-y explode" style="top: 0px; left: 520px; top: 140px;">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 380px; top: 200px;">
+      <em class="text">client</em>
+    </span>
+
+    <span class="stream very-short flip-y explode" style="top: 0px; left: 720px; top: 140px;">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 680px; top: 200px;">
+      <em class="text">client</em>
+    </span>
+
+    <span class="stream short flip-x explode" style="top: 0px; left: 320px; top: -165px;">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 40px; top: -250px">
+      <em class="text">client</em>
+    </span>
+
+    <span class="stream short flip-x explode" style="top: 0px; left: 320px; top: 50px;">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 40px; top: -30px">
+      <em class="text">client</em>
+    </span>
+
+    <span class="stream short explode" style="top: 0px; left: 880px; top: -165px;">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 1010px; top: -250px">
+      <em class="text">client</em>
+    </span>
+
+    <span class="stream short explode" style="top: 0px; left: 880px; top: 50px;">
+      <span class="dots">
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot hide"></span>
+        <span class="dot hide"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 1010px; top: -30px">
+      <em class="text">client</em>
+    </span>
+
+    <span class="server explode" style="top: -250px; left: 450px" class="shake">
+      <em>server</em>
+    </span>
+  </span>
+</div>
+
+<div>
+  what if clients just <em>share</em> data between each other instead?
+</div>
+
+<div class="slide" data-bodyclass="canvas">
+  <span style="position: absolute; top: 0px; left: 90px">
+    <span class="stream short" style="top: 0px; left: 310px; top: 220px; transform: rotate(150deg);">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 20px; top: 200px;">
+      <em class="text">peer</em>
+    </span>
+
+    <span class="stream short" style="top: 0px; left: 140px; top: 100px; transform: rotate(270deg);">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 40px; top: -170px">
+      <em class="text">peer</em>
+    </span>
+
+    <span class="stream short" style="top: 0px; left: 880px; top: 0px; transform: rotate(270deg);">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 770px; top: -250px">
+      <em class="text">peer</em>
+    </span>
+
+    <span class="stream short" style="top: 0px; left: 320px; top: -10px; transform: rotate(25deg);">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 450px; top: 25px">
+      <em class="text">peer</em>
+    </span>
+
+    <span class="stream very-short" style="top: 0px; left: 750px; top: 140px; transform: rotate(0deg);">
+      <span class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 860px; top: 80px">
+      <em class="text">peer</em>
+    </span>
+  </span>
+</div>
+
+<div>
+  THIS IS <em>P2P</em>
+</div>
+
+<div>
+  But can we <em>trust</em> incoming data?
+</div>
+
+<div class="slide" data-bodyclass="canvas">
+  <span style="position: absolute; top: -50px; left: 600px">
+    <span class="peer">
+      <em class="text troll">peer</em>
+    </span>
+  </span>
+</div>
+
+<div>
+  <em>split</em> the file into pieces <em>~(512kb - 10mb)</em> and <em>hash</em> each of them
+</div>
+
+<div>
+  If we get <em>piece #1</em> we verify it using <em>hash #1</em>
+</div>
+
+<div>
+  <em>store</em> the list of hashes (<em>torrent file</em>) on a <em>trusted</em> server
+</div>
+
+<div>
+  ... but how do we find <em>peers</em> that <em>share</em> our file?
+</div>
+
+<div>
+  <em>D</em>ISTRIBUTED <br>
+  <em>H</em>ASH <br>
+  <em>T</em>ABLE
+</div>
+
+<div>
+  every <em>peer</em> join the <em>dht</em>
+
+  <pre>
+{
+  hash(<em>torrent_file_1</em>): <em>'my-ip:my-port'</em>,
+  hash(<em>torrent_file_2</em>): <em>'my-ip:my-port'</em>,
+  ...
+}
+  </pre>
+</div>
+
+<div>
+<em>~10,000,000</em> nodes at any time
+
+<a style="font-size:50px" href="https://dsn.tm.kit.edu/english/2936.php">(source)</a>
+</div>
+
+<div>
+  this is basically how <em>bittorrent</em> downloads data
+</div>
+
+<div>
+  PRETTY <em>SIMPLE</em>
+</div>
+
+<div>
+  bittorrent can distribute <em>A LOT</em> of content
+</div>
+
+<div>
+  we want to access <em>ALL</em> this content instantly
+</div>
+
+<div>
+  how can we make <em>bittorrent</em> stream?
+</div>
+
+<div>
+  <em>streaming</em> bittorrent means fetching pieces based on <em>demand</em>
+</div>
+
+<div class="slide" data-bodyclass="canvas">
+  <span style="position: absolute; left: 210px; top: -70px">
+    <span class="peer">
+      <em class="text">me</em>
+    </span>
+    <span class="piece" style="left: 350px; top: 60px">
+      <span class="text subscript" style="">piece₅</span>
+
+      <span class="stream" style="width: 300px; top: 60px; left: -15px; -webkit-transform: rotate(180deg);">
+        <span class="dots single">
+          <span class="dot"></span>
+        </span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 690px">
+      <em class="text">peer</em>
+    </span>
+  </span>
+</div>
+
+<div class="slide" data-bodyclass="canvas">
+  <span style="position: absolute; left: 210px; top: -70px">
+    <span class="peer">
+      <em class="text">me</em>
+    </span>
+    <span class="piece slow" style="left: 350px; top: 60px">
+      <span class="text subscript" style="">piece₅</span>
+
+      <span class="stream" style="width: 300px; top: 60px; left: -15px; -webkit-transform: rotate(180deg);">
+        <span class="dots single">
+          <span class="dot"></span>
+        </span>
+      </span>
+
+    </span>
+    <span class="peer" style="left: 690px">
+      <em class="text troll">peer</em>
+    </span>
+  </span>
+</div>
+
+<div class="slide" data-bodyclass="canvas">
+  <span style="position: absolute; left: 210px; top: -220px">
+    <span class="peer" style="top: 130px;">
+      <em class="text">me</em>
+    </span>
+
+    <span class="piece" style="left: 350px; top: 90px; -webkit-transform: rotate(345deg);">
+      <span class="text subscript" style="">piece₅</span>
+      <span class="stream" style="width: 300px; top: 60px; left: -15px; -webkit-transform: rotate(180deg);">
+        <span class="dots single">
+          <span class="dot"></span>
+        </span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 690px">
+      <em class="text">peer</em>
+    </span>
+
+    <span class="piece" style="left: 350px; top: 320px; -webkit-transform: rotate(15deg);">
+      <span class="text subscript" style="">piece₅</span>
+
+      <span class="stream" style="width: 300px; top: 60px; left: -15px; -webkit-transform: rotate(180deg);">
+        <span class="dots single">
+          <span class="dot"></span>
+        </span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 690px; top: 270px">
+      <em class="text">peer</em>
+    </span>
+  </span>
+</div>
+
+<div class="slide" data-bodyclass="canvas">
+  <span style="position: absolute; left: 210px; top: -220px">
+    <span class="peer" style="top: 130px;">
+      <em class="text">me</em>
+    </span>
+
+    <span class="piece slow" style="left: 350px; top: 90px; -webkit-transform: rotate(345deg);">
+      <span class="text subscript" style="">piece₅</span>
+      <span class="stream" style="width: 300px; top: 60px; left: -15px; -webkit-transform: rotate(180deg);">
+        <span class="dots single">
+          <span class="dot"></span>
+        </span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 690px">
+      <em class="text troll">peer</em>
+    </span>
+
+    <span class="piece" style="left: 350px; top: 320px; -webkit-transform: rotate(15deg);">
+      <span class="text subscript" style="">piece₅</span>
+
+      <span class="stream" style="width: 300px; top: 60px; left: -15px; -webkit-transform: rotate(180deg);">
+        <span class="dots single">
+          <span class="dot"></span>
+        </span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 690px; top: 270px">
+      <em class="text">peer</em>
+    </span>
+  </span>
+</div>
+
+<div class="slide" data-bodyclass="canvas">
+  <span style="position: absolute; left: 210px; top: -220px">
+    <span class="peer" style="top: 130px;">
+      <em class="text">me</em>
+    </span>
+
+    <span class="piece slow fade-out" style="left: 350px; top: 90px; -webkit-transform: rotate(345deg);">
+      <span class="text subscript" style="">piece₅</span>
+      <span class="stream" style="width: 300px; top: 60px; left: -15px; -webkit-transform: rotate(180deg);">
+        <span class="dots single">
+          <span class="dot"></span>
+        </span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 690px">
+      <em class="text troll-static fade-out">peer</em>
+    </span>
+
+    <span class="piece" style="left: 350px; top: 320px; -webkit-transform: rotate(15deg);">
+      <span class="text subscript" style="">piece₅</span>
+
+      <span class="stream" style="width: 300px; top: 60px; left: -15px; -webkit-transform: rotate(180deg);">
+        <span class="dots single">
+          <span class="dot"></span>
+        </span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 690px; top: 270px">
+      <em class="text">peer</em>
+    </span>
+  </span>
+</div>
+
+<div class="slide" data-bodyclass="canvas">
+  <span style="position: absolute; left: 210px; top: -220px">
+    <span class="peer" style="top: 130px;">
+      <em class="text">me</em>
+    </span>
+
+    <span class="piece fade-in" style="left: 350px; top: 90px; -webkit-transform: rotate(345deg);">
+      <span class="text subscript" style="">piece₅</span>
+      <span class="stream" style="width: 300px; top: 60px; left: -15px; -webkit-transform: rotate(180deg);">
+        <span class="dots single">
+          <span class="dot"></span>
+        </span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 690px">
+      <em class="text fade-in">peer</em>
+    </span>
+
+    <span class="piece" style="left: 350px; top: 320px; -webkit-transform: rotate(15deg);">
+      <span class="text subscript" style="">piece₅</span>
+
+      <span class="stream" style="width: 300px; top: 60px; left: -15px; -webkit-transform: rotate(180deg);">
+        <span class="dots single">
+          <span class="dot"></span>
+        </span>
+      </span>
+    </span>
+
+    <span class="peer" style="left: 690px; top: 270px">
+      <em class="text">peer</em>
+    </span>
+  </span>
+</div>
+
+<div>
+  concurrent fetch of most <em>critical</em> pieces
+</div>
+
+<div>
+  I <em>IMPLEMENTED</em> THIS
+</div>
+
+<div>
+  <a href="https://github.com/mafintosh/torrent-stream">torrent-stream</a> is a node module that does this
+</div>
+
+<div>
+  <pre>
+    <em>var</em> engine <em>=</em> torrentStream(<em>torrentFile</em>)
+    <em>var</em> file <em>=</em> engine.files[<em>0</em>]
+    <em>var</em> stream <em>=</em> file.<em>createReadStream</em>({
+      start: <em>0</em>,
+      end: <em>1000</em>
+    })
+  </pre>
+</div>
+
+<div>
+  streaming content is a<br> <em>billion dollar</em> industry
+</div>
+
+<div>
+  <em>netflix</em> uses ~1/3 of internet traffic during peak hours
+  <a style="font-size:50px" href="http://online.wsj.com/news/articles/SB10001424052702304908304579561802483718502">(source)</a>
+</div>
+
+<div>
+  1/3!
+</div>
+
+<div>
+  what if we could stream video content using <em>P2P</em>?
+</div>
+
+<div>
+  <a href="https://github.com/mafintosh/peerflix">peerflix</a> streams video to vlc
+</div>
+
+<div>
+  <em>Mathias</em>, show demo of peerflix
+</div>
+
+<div>
+  where normal streaming decreases <em>quality</em> under load we could <em>increase</em> it
+</div>
+
+<div>
+  the <em>more</em> people who watch the video the <em>better</em> it runs
+</div>
+
+<div>
+  this is <em><i>not</i></em> a gimmick
+</div>
+
+<div style="text-align: center">
+  <em>MAD</em> SCIENCE TIME
+</div>
+
+<div>
+  stream <em>any</em> content
+</div>
+
+<div>
+  all of <em>wikipedia</em> is on bittorrent
+</div>
+
+<div>
+  <a href="https://github.com/mafintosh/peerwiki">peerwiki</a> browses wikipedia using bittorrent
+</div>
+
+<div>
+  <em>Mathias</em>, show demo of peerwiki
+</div>
+
+<div>
+  <em>linux</em> is on bittorrent
+</div>
+
+<div>
+  what if virtual box <em>understood streams</em>?
+</div>
+
+<div>
+  what if virtual box <span style="text-decoration:line-through"><em>understood streams</em>?</span>
+</div>
+
+<div>
+  what if virtual box <em>did not change a thing</em>?
+</div>
+
+<div>
+  <img style="float: right; width:45%" src="https://camo.githubusercontent.com/d4d0aff080a46a5991ed823a7fc308c36e6ee682/687474703a2f2f692e696d6775722e636f6d2f433462756f2e676966">
+  <img style="float: right; width:50%; padding: 10px;" src="http://gifs.gifbin.com/052011/1307032252_atomic_bomb_mushroom_cloud_explosion.gif" alt="funny gifs">
+  <img style="float: right; width:30%; padding-right:10px" src="http://www.pbh2.com/wordpress/wp-content/uploads/2013/06/animated-gifs-amazing-trash-can.gif">
+</div>
+
+<div>
+  <a href="https://github.com/mafintosh/torrent-mount">torrent-mount</a> mounts a torrent as a file system
+</div>
+
+<div>
+  <em>Mathias</em>, show demo of torrent-mount
+</div>
+
+<div>
+  <em>DANKE SCHÖN</em>, come find me in the hallway
+</div>
+
+<div>
+  <a href="https://github.com/feross/webtorrent">webtorrent</a><br>
+  <a href="https://github.com/jbenet/ipfs">ipfs</a><br>
+  <a href="https://github.com/dominictarr/scuttlebutt">scuttlebutt</a><br>
+  <a href="https://github.com/maxogden/dat">dat</a><br>
+  <a href="https://github.com/substack/peermaps">peermaps</a>
+</div>
+
+</body></html>
