@@ -1,0 +1,9 @@
+
+
+
+
+
+          monitoring
+          
+          - able to see status of each service
+          - opbeat, newrelic, pingdom, pagerduty - send to the one responsible

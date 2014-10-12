@@ -1,0 +1,8 @@
+
+
+
+
+
+          - (the laws of unix) does one thing (and only one thing) well
+          - separate deployments
+          - multiple datastores, multiple languages, etc

@@ -1,0 +1,228 @@
+
+turning a monolith into microservices at e-conomic - a practical(?) guide
+
+----
+
+who am i?
+
+  mathias buus
+  hacker, works at ge.tt -> e-conomic
+
+----
+
+what is a MONOLITH?
+
+----
+
+an unscientific definition
+
+ - single repo code base
+ - one deployment
+ - one datastore, one(ish) language, etc
+
+----
+
+pros
+
+ - SIMPLE
+ - easy deployment
+ - easy development
+ - less dependency hell
+ - easy to understand (name of repo is your company)
+
+----
+
+cons
+
+ - scalability (employees, dev tools, when you scale your app to scale everything)
+ - hard dependencies (hard to upgrade frameworks, binaries)
+ - can I change this? (complexity grows over time)
+ - hard to get an overview (name of repo is your company)
+
+----
+
+what are micro services?
+
+----
+
+ - (the laws of unix) does one thing (and only one thing) well
+ - separate deployments
+ - multiple datastores, multiple languages, etc
+
+----
+
+at e-conomic we used to have two big  M O N O L I T H  s
+
+we were hitting more and more of the cons
+
+ - taking FOREVER for new devs to start pushing stuff
+ - dev tools starting to break down because of too much code
+ - deployment + qa become a bigger and bigger problem
+ - LOTS of tables in the same database - no clear picture
+
+----
+
+we decided to do something about it...
+
+----
+
+THE FUN PART (ish)
+
+----
+
+identify some easy wins
+
+----
+
+found a couple of stateless problems with no business logic
+
+  1. image conversion
+  2. sending of emails
+
+main priority was time to market
+
+----
+
+create your first service
+
+ - we picked image conversion
+
+----
+
+- created a new repo
+- (more or less) put the old code inside that new repo
+- added an http server
+
+same code structure, same language etc
+same deployment cycle
+
+----
+
+some immediate wins
+
+ - isolation
+ - seperate scaling
+ - seperate memory and CPU usage
+
+----
+
+some immediate complexities
+
+ - did not run locally automatically
+ - workaround was hosting a local one internally
+
+----
+
+ - first service should give a great experience
+ - happy "bosses" means more services
+ - small steps
+
+----
+
+mathias, show them https://html-converter.e-conomic.ws
+
+----
+
+create a few more services
+
+----
+
+ - our second service was an email service
+ - spearheaded by people excited about the image converter
+ - had a lot of cons, because it was a first try for some
+ - still had pros, smaller code base, seperate deployment, seperate memory/cpu usage
+ - culture changed, "can't we make a service that does that?"
+
+----
+
+lack of infrastructure
+
+----
+
+ - after a few services we needed to focus on infrastructure
+ - logging, messaging, discovery, environments
+ - not an easy task, we did a lot of small steps
+
+----
+
+some essential tools you'll need
+
+----
+
+logging
+
+ - set up standardized logging
+ - took several iterations for us
+ - stdout/stderr/messages all goes to logstash
+ - easy live logging makes life easier - tap into what goes on
+
+----
+
+monitoring
+
+ - able to see status of each service
+ - opbeat, newrelic, pingdom, pagerduty - send to the one responsible
+
+----
+
+stats
+
+ - we use hosted graphite
+ - what happened over time
+
+----
+
+mathias, show them https://service-monitor.e-conomic.ws
+
+----
+
+messaging / event bus
+
+ - decoupled inter-service communication
+ - settled with Redis, easy to set up
+ - first introduction, "wait wut - we want events in everything!"
+ - fast deployment
+   - "how many does...?" is now answered in hours instead of weeks
+
+----
+
+mathias, show them https://ui-for-redis.e-conomic.ws
+
+----
+
+discoverability / routing
+
+ - services need to find each other in a dynamic way
+ - hard problem
+ - addd etcd as service registry
+ - needed in order to scale number of services
+ - failover
+ - access (internal/external services)
+
+----
+
+environments
+
+ - depending on size of team need different environments
+ - we have: production, staging, playground, development
+
+ - https://service-monitor.e-conomic.ws
+ - https://service-monitor.staging.e-conomic.ws
+ - https://service-monitor.playground.e-conomic.ws
+ - https://service-monitor.localhost.e-conomic.ws (local registry)
+
+----
+
+deployment
+
+ - single-click deployments makes it easy for everyone
+ - we set up continuos deployment on one of the main products
+ - uses internal/external tools to make most people able to deploy
+
+----
+
+mathias, do the deployment thing we talked about
+
+----
+
+questions?

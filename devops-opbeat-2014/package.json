@@ -1,0 +1,22 @@
+{
+  "name": "devops-opbeat-talk",
+  "version": "1.0.0",
+  "description": "my talk at the devops night at opbeat",
+  "main": "compile.js",
+  "dependencies": {
+    "rimraf": "^2.2.8"
+  },
+  "scripts": {
+    "build": "node build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mafintosh/devops-opbeat-talk.git"
+  },
+  "author": "Mathias Buus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mafintosh/devops-opbeat-talk/issues"
+  },
+  "homepage": "https://github.com/mafintosh/devops-opbeat-talk"
+}

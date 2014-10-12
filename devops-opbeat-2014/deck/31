@@ -1,0 +1,14 @@
+
+
+
+
+
+          environments
+          
+          - depending on size of team need different environments
+          - we have: production, staging, playground, development
+          
+          - https://service-monitor.e-conomic.ws
+          - https://service-monitor.staging.e-conomic.ws
+          - https://service-monitor.playground.e-conomic.ws
+          - https://service-monitor.localhost.e-conomic.ws (local registry)

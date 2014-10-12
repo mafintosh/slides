@@ -1,0 +1,12 @@
+
+
+
+
+
+          messaging / event bus
+          
+          - decoupled inter-service communication
+          - settled with Redis, easy to set up
+          - first introduction, "wait wut - we want events in everything!"
+          - fast deployment
+          - "how many does...?" is now answered in hours instead of weeks

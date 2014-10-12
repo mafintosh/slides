@@ -1,0 +1,11 @@
+
+
+
+
+
+          cons
+          
+          - scalability (employees, dev tools, when you scale your app to scale everything)
+          - hard dependencies (hard to upgrade frameworks, binaries)
+          - can I change this? (complexity grows over time)
+          - hard to get an overview (name of repo is your company)

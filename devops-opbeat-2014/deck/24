@@ -1,0 +1,11 @@
+
+
+
+
+
+          logging
+          
+          - set up standardized logging
+          - took several iterations for us
+          - stdout/stderr/messages all goes to logstash
+          - easy live logging makes life easier - tap into what goes on

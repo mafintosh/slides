@@ -1,0 +1,10 @@
+
+
+
+
+
+          - our second service was an email service
+          - spearheaded by people excited about the image converter
+          - had a lot of cons, because it was a first try for some
+          - still had pros, smaller code base, seperate deployment, seperate memory/cpu usage
+          - culture changed, "can't we make a service that does that?"

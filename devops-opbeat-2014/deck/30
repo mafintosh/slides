@@ -1,0 +1,13 @@
+
+
+
+
+
+          discoverability / routing
+          
+          - services need to find each other in a dynamic way
+          - hard problem
+          - addd etcd as service registry
+          - needed in order to scale number of services
+          - failover
+          - access (internal/external services)
