@@ -1,0 +1,30 @@
+{
+  "name": "mafintosh-webrebels-2014",
+  "version": "1.0.3",
+  "description": "my talk at webrebels 2014 in oslo, norway",
+  "main": "index.js",
+  "dependencies": {
+    "single-line-log": "^0.4.0",
+    "keypress": "^0.1.0"
+  },
+  "bin": {
+    "mafintosh-webrebels-2014": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mafintosh/webrebels-2014"
+  },
+  "keywords": [
+    "talk",
+    "webrebels",
+    "2014",
+    "oslo",
+    "norway"
+  ],
+  "author": "Mathias Buus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mafintosh/webrebels-2014/issues"
+  },
+  "homepage": "https://github.com/mafintosh/webrebels-2014"
+}
