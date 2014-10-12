@@ -1,0 +1,16 @@
+{
+  "name": "cph-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bench.js",
+  "dependencies": {
+    "generate-function": "^2.0.0",
+    "picture-tube": "^0.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
