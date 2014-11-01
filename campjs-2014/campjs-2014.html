@@ -1,0 +1,379 @@
+<!DOCTYPE html><html><head><title></title>
+<link rel="stylesheet" type="text/css" href="font.css">
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /><style type='text/css'>
+body {
+  font-family: 'Source Sans Pro';
+  letter-spacing:-5px;
+  background:#000;
+  background-size:100%;
+  color:#fff;
+  margin:0;
+  padding:0;
+  font-weight:bold;
+}
+
+h1, h2, h3, p {
+  margin:0;
+}
+
+em, a {
+  font-style:normal;
+  color:#8dbd0c;
+}
+
+a {
+  background: #34d0e7;
+  color:#000;
+  text-decoration:none;
+}
+
+img {
+  width:100%;
+}
+
+div {
+  cursor:pointer;
+  cursor:hand;
+  position:absolute;
+  top:0px;
+  left:0px;
+  padding:75px;
+  line-height:97%;
+}
+
+div.center {
+  text-align:center;
+}
+
+div.imageText {
+  text-shadow:0px 0px 5px rgba(0,0,0,0.2);
+}
+
+.dat-logo {
+  background-image: url(logo.png);
+  display: block;
+  padding: 250px;
+  background-size: 60%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  font-size: 250px;
+}
+
+.no-break {
+  white-space: nowrap;
+}
+
+pre, code {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;
+}
+
+</style><script type='text/javascript'>
+window.onload = function() {
+    var s = document.getElementsByTagName('div'), ti;
+    if (!s) return;
+    big = { current: 0, forward: fwd, reverse: rev, go: go, length: s.length };
+    function go(n) {
+        big.current = n;
+        var i = 1e3, e = s[n], t = parseInt(e.dataset.timeToNext || 0, 10);
+        document.body.className = e.dataset.bodyclass || '';
+        for (var k = 0; k < s.length; k++) s[k].style.display = 'none';
+        e.style.display = 'inline';
+        e.style.fontSize = i + 'px';
+        if (e.firstChild && e.firstChild.nodeName === 'IMG') {
+            document.body.style.backgroundImage = 'url(' + e.firstChild.src + ')';
+            e.firstChild.style.display = 'none';
+            if ('classList' in e) e.classList.add('imageText');
+        } else {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundColor = e.style.backgroundColor;
+        }
+        if (ti !== undefined) window.clearInterval(ti);
+        if (t > 0) ti = window.setTimeout(fwd, (t * 1000));
+        while ((e.offsetWidth > window.innerWidth ||
+            e.offsetHeight > window.innerHeight) && i >= 0) {
+            e.style.fontSize = (i -= 2) + 'px';
+        }
+        e.style.marginTop = ((window.innerHeight - e.offsetHeight) / 2) + 'px';
+        if (window.location.hash !== n) window.location.hash = n;
+        document.title = e.textContent || e.innerText;
+    }
+    document.onclick = function() { go(++big.current % (s.length)); };
+    function fwd() { go(Math.min(s.length - 1, ++big.current)); }
+    function rev() { go(Math.max(0, --big.current)); }
+    document.onkeydown = function(e) {
+        if (e.which === 39 || e.which === 34 || e.which === 40) fwd();
+        if (e.which === 37 || e.which === 33 || e.which === 38) rev();
+    };
+    document.ontouchstart = function(e) {
+        var x0 = e.changedTouches[0].pageX;
+        document.ontouchend = function(e) {
+            var x1 = e.changedTouches[0].pageX;
+            if (x1 - x0 < 0) fwd();
+            if (x1 - x0 > 0) rev();
+        };
+    };
+    function parse_hash() {
+        return Math.max(Math.min(s.length - 1,
+            parseInt(window.location.hash.substring(1), 10)), 0);
+    }
+    if (window.location.hash) big.current = parse_hash() || big.current;
+    window.onhashchange = function() {
+        var c = parse_hash();
+        if (c !== big.current) go(c);
+    };
+    go(big.current);
+};
+</script></head><body>
+
+<div>
+  <span style="float:left" class="dat-logo">dat</span>
+  <span style="float:right; margin-top: 140px; visibility: hidden;">in action<br><em>a campjs</em><br><em>workshop</em></span>
+</div>
+
+<div>
+  <span style="float:left" class="dat-logo">dat</span>
+  <span style="float:right; margin-top: 140px">in action<br><em>a campjs</em><br><em>talk</em></span>
+</div>
+
+<div>
+  <span class="no-break">Mathias Buus</span>
+  <span class="no-break"><em>@mafintosh</em></span>
+</div>
+
+<div>
+  <i>"Reading through these modules is like a showcase of Node’s stream API. Academically they’re fascinating, despite the obvious grey market connotations."</i>
+  <br><br><em>dailyjs 31 oct 2014</em> talking about <em>mathias'</em> code
+</div>
+
+<div>
+  <span style="float:left" class="dat-logo">dat?</span>
+</div>
+
+<div>
+  <em>dat</em> is an open source tool for sharing and collaborating on data
+</div>
+
+<div>
+  started by <em>maxogden</em><br>
+  <em>mathias</em> joined core developement around april
+</div>
+
+<div>
+  <em>analogy time:</em><br>
+  <span class="no-break">lets talk about source control</span>
+</div>
+
+<div>
+  <span class="no-break">life before git</span>
+</div>
+
+<div>
+  i want to fix a bug in <em class="no-break">cool-project</em>
+</div>
+
+<div>
+  <ol style="margin-left:90px;">
+    <li class="no-break">somehow get a zip of <em>cool-project</em></li>
+    <li class="no-break">unpack and edit a file</li>
+    <li class="no-break">email the file back</li>
+    <li class='no-break'>????</li>
+</div>
+
+<div>
+  maintainer creates new zip of <em class="no-break">cool-project</em> that might contain my fix
+</div>
+
+<div>
+  <span class="no-break">all in all a <em>mess</em></span>
+</div>
+
+<div>
+  <span class="no-break"><em>git</em> to the rescue</span>
+</div>
+
+<div>
+  <ol style="margin-left:90px">
+    <li class="no-break">git clone <em>cool-project</em></li>
+    <li class="no-break">edit a file</li>
+    <li class="no-break">git add file</li>
+    <li class="no-break">git commit -m "fixed issue"</li>
+    <li class="no-break">git push</li>
+  </ol>
+</div>
+
+<div>
+  <ol style="margin-left:90px">
+    <li class="no-break">git clone git://<em>github.com</em>/cool-project</li>
+    <li class="no-break">edit a file</li>
+    <li class="no-break">git add file</li>
+    <li class="no-break">git commit -m "fixed issue"</li>
+    <li class="no-break">git push</li>
+  </ol>
+</div>
+
+<div>
+  getting the latest changes is as simple as
+  <br><br>
+  <em>git pull</em>
+</div>
+
+<div>
+  <em>claim:</em> currently data sharing is a mess
+</div>
+
+<div>
+  <span class="no-break">email csv files</span>
+</div>
+
+<div>
+  <span class="no-break">database dumps in git</span>
+</div>
+
+<div>
+  we want to do for <em>data</em>
+  what git did for source code
+</div>
+
+<div>
+  <span class="no-break">npm install -g <em>dat</em></span>
+</div>
+
+<div>
+  <ol style="margin-left: 100px;">
+    <li class="no-break">dat init</li>
+    <li class="no-break">collect-data | dat import</li>
+    <li class="no-break">dat listen</li>
+  </ol>
+</div>
+
+<div>
+  <ol style="margin-left: 100px;">
+    <li class="no-break"><em>dat init</em></li>
+    <li class="no-break">collect-data | dat import</li>
+    <li class="no-break">dat listen</li>
+  </ol>
+</div>
+
+<div>
+  <ol style="margin-left: 100px;">
+    <li class="no-break">dat init</li>
+    <li class="no-break"><em>collect-data | dat import</em></li>
+    <li class="no-break">dat listen</li>
+  </ol>
+</div>
+
+<div>
+  <ol style="margin-left: 100px;">
+    <li class="no-break">dat init</li>
+    <li class="no-break">collect-data | dat import</li>
+    <li class="no-break"><em>dat listen</em></li>
+  </ol>
+</div>
+
+<div>
+  <span class="no-break">dat clone your-data-set.com</span>
+</div>
+
+<div>
+  getting the latest changes is as simple as<br><br>
+  <em>dat pull</em>
+</div>
+
+<div>
+  getting the latest changes is as simple as<br><br>
+  <em>dat pull --live</em>
+</div>
+
+<div>
+  attach binary blobs to data<br><br>
+
+  <em class="no-break">dat blobs put my-key file.ext</em>
+</div>
+
+<div>
+  data is stored locally in <em>leveldb</em>
+  blobs are stored in <em>blob-stores</em>
+</div>
+
+<div>
+  <span class="no-break">https://github.com/maxogden/<em>abstract-blob-store</em></span>
+</div>
+
+<div>
+  choose the blob store that fits your use case
+  <em>s3</em>, <em>local-fs</em>, <em>bittorrent</em>, <em class="no-break">anyone-blob-store-on-npm</em>
+</div>
+
+<div>
+  a data set we can all relate to: <em>npm</em>
+</div>
+
+<div>
+  <span class="no-break">dat clone npm.dathub.org</span>
+</div>
+
+<div>
+  <span class="no-break">dat clone npm.dathub.org <em>--skim</em></span>
+</div>
+
+<div>
+  <em>mathias</em>, calculate how big npm is using dat
+</div>
+
+<div>
+  <span class="no-break">dat cat | transform</span>
+</div>
+
+<div>
+  <span class="no-break">dat cat | docker run -i transform</span>
+</div>
+
+<div>
+  <em>mathias</em>, transform the npm data using <span class="no-break"><em>bulk-markdown-to-png</em></span>
+</div>
+
+<div>
+  the future
+</div>
+
+<div>
+  branches, <em class="no-break">checkout revision</em>, <span class="no-break">multi master replication</span>, <em class="no-break">sync to databases</em>
+</div>
+
+<div>
+  <em>@wa7son</em> and i used it to build a <i>shallow</i> npm
+</div>
+
+<div>
+  <span class="no-break">dat-npm |</span> 
+  <span class="no-break">only-latest-modules-and-deps |</span>
+  <span class="no-break">dat-npm-shallow</span>
+</div>
+
+<div>
+  <em>mathias</em>, explain how dat-npm-shallow works
+</div>
+
+<div>
+  reduces npm blob overhead from <em>~200gb</em>
+  to <em>~25gb</em>
+</div>
+
+<div>
+  will be online when i find some internet
+</div>
+
+<div>
+  thanks!
+</div>
+
+<div>
+  get involved in<br>
+  <em>#dat</em><br>
+  on freenode and<br>
+  <em>maxogden/dat</em>
+</div>
+
+<div>
+  see you at the workshop
+</div>

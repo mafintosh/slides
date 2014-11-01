@@ -1,0 +1,207 @@
+dat in action
+
+---
+
+mathias buus etc
+
+---
+
+dat?
+
+---
+
+dat is an open source tool for sharing and collaborating on data
+(by maxogden etc)
+
+---
+
+analogy time: lets talk about source control
+
+---
+
+life before git
+
+---
+
+i want to fix a bug in *cool-project*
+
+---
+
+1. somehow obtain a zip of *cool-project*
+2. unpack and edit a file
+3. email the file back with a description of changes
+4. ????
+
+---
+
+5. maintainer creates new zip of *cool-project* that might contain my fix
+
+---
+
+all in all a mess
+
+---
+
+git to the rescue
+
+---
+
+* git clone *cool-project*
+* edit a file
+* git add file
+* git commit -m "fixed issue"
+* git push
+
+---
+
+* git clone git://github.com/*cool-project*
+* edit a file
+* git add file
+* git commit -m "fixed issue"
+* git push
+
+---
+
+getting the latest changes is as simple as
+
+git pull
+
+---
+
+currently data (not source code) sharing is a mess
+
+---
+
+email csv files
+
+---
+
+database dumps in git
+
+---
+
+we want to do for data
+what git did for source code
+
+---
+
+npm install -g dat
+
+---
+
+dat init
+collect-data | dat import
+dat listen
+
+---
+
+*dat init*                  # create a new dat
+collect-data | dat import
+dat listen
+
+---
+
+dat init
+*collect-data | dat import* # add some data
+dat listen
+
+---
+
+dat init
+collect-data | dat import
+*dat listen*                # host the data
+
+---
+
+dat clone your-data-set.com
+
+---
+
+getting the latest changes is as simple as
+
+dat pull
+
+---
+
+getting the latest changes is as simple as
+
+dat pull --live
+
+---
+
+attach binary blobs to data
+
+dat blobs put my-key my-file.ext
+
+---
+
+data is stored locally in leveldb
+blobs are stored in blob-stores (maxogden/abstract-blob-store)
+
+---
+
+choose the blob store that fits your use case
+s3, local-fs, bittorrent, anyone-blob-store-on-npm
+
+---
+
+a data set we can all relate to: npm
+
+---
+
+dat clone npm.dathub.org
+
+---
+
+*clone with remote blobs*
+
+dat clone npm.dathub.org --skim
+
+---
+
+mathias, calculate how big npm is using dat
+
+---
+
+dat cat | transform
+
+---
+
+dat cat | docker run -i transform
+
+---
+
+mathias, transform the npm data using bulk-markdown-to-png
+
+---
+
+@watson and i used it to build a *shallow* full-fat offline npm for campjs
+
+---
+
+dat-npm | only-latest-modules-and-deps | dat-npm-offline
+
+---
+
+mathias, show how dat-npm-offline allows offline npm installs
+
+---
+
+npm install -g dat-npm-offline
+dat-npm-offline
+npm install dat --cache-min 99999999
+
+---
+
+future
+
+---
+
+branches
+checkout "revision"
+multi master replication
+sync to databases 
+
+---
+
+thanks
