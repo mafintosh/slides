@@ -1,0 +1,9 @@
+
+
+    given a conflict (two different values for the same key)
+    
+    {key:"hello", value:"world"}
+    {key:"hello", value:"sverige"}
+    
+    we want to insert a new value for "hello" that overrides
+    the previous two

@@ -1,0 +1,5 @@
+
+
+    the trade-off is there is NO guarantee of ordering between logs
+    
+    (db1's log might arrive before db2's etc)

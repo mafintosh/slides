@@ -1,0 +1,10 @@
+
+
+    an append-only log kinda looks like this
+    
+    # 1: entry
+    # 2: entry
+    ...
+    # n: entry
+    
+    basically we NEVER delete from this log and ALL entries or numbered (locally)

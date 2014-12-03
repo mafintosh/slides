@@ -1,0 +1,9 @@
+
+
+    simply insert a new values that has references to the previous two
+    
+    {
+      key: "hello",
+      value: "denmark!",
+      merges: ["db1 - 2", "db2 - 3"]
+    }

@@ -1,0 +1,12 @@
+
+
+    solution:
+    
+    replicate the database to more servers.
+    all servers should have the same data.
+    
+    ##########   ##########   ##########
+    #        #   #        #   #        #
+    #  db 1  #   #  db 2  #   #  db 3  #
+    #        #   #        #   #        #
+    ##########   ##########   ##########

@@ -1,0 +1,5 @@
+
+
+    i made a low level impl of just the log replication part
+    
+    https://github.com/mafintosh/scuttleup

@@ -1,0 +1,5 @@
+
+
+    # 1: {type:'put', key:'hello', value:'world'} 
+    # 2: {type:'put', key:'hi', value:'sverige'}
+    # 3: {type:'del', key:'hello'}

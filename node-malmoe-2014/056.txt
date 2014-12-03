@@ -1,0 +1,7 @@
+
+
+    relying on datestamps can be a bad thing though
+    
+    - clocks are not necessarily in sync
+    - we get implicit overrides
+      (you might insert a key and have it overriden without warning by someone else)

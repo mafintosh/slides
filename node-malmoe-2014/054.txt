@@ -1,0 +1,9 @@
+
+
+    if two values for a specific key exists simply
+    choose the one with the biggest timestamp
+    
+    {key:"hello", value:"world", "timestamp":100}
+    {key:"hello", value:"sverige", "timestamp":101}
+    
+    hello: sverige wins!

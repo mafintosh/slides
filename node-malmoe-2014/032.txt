@@ -1,0 +1,3 @@
+
+
+    everytime you do an operation on the database you append it to the log

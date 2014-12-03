@@ -1,0 +1,6 @@
+
+
+    replicate again:
+    
+    1. send the head of your local db1 log (3)
+    2. db1 sends a empty diff (from 3 to 3)

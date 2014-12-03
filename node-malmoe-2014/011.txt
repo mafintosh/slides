@@ -1,0 +1,4 @@
+
+
+    a master MUST be elected with a global majority of votes
+    (the set of db servers is preconfigured)

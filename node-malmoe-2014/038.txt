@@ -1,0 +1,6 @@
+
+
+    problem:
+    
+    db1 might have logs from other guys though
+    we want those as well

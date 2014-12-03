@@ -1,0 +1,6 @@
+
+
+    both the previous values are entries in some logs (remember scuttlebutt)
+    
+    # db1 - 2: {key:"hello", value:"world"}
+    # db2 - 3: {key:"hello", value:"sverige"}

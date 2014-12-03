@@ -1,0 +1,5 @@
+
+
+    simple idea:
+    
+    every database has their own local append-only log

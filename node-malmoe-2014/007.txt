@@ -1,0 +1,5 @@
+
+
+    the classic generic solution
+    
+    elect a *master*

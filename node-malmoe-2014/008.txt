@@ -1,0 +1,10 @@
+
+
+    ############   ##########   ##########
+    #          #   #        #   #        #
+    #  *db 1*  #   #  db 2  #   #  db 3  #
+    #          #   #        #   #        #
+    ############   ##########   ##########
+    
+    *db 1* is now master.
+    all writes goes to him and he tells everyone else

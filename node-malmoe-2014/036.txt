@@ -1,0 +1,4 @@
+
+
+    1. send the head of your local db1 log (0 since we havent replicated)
+    2. db1 sends you the diff (from 0 to 3)

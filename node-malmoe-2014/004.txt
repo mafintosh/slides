@@ -1,0 +1,7 @@
+
+
+    having a single server database is a bad idea
+    
+    - if it blows up the data is gone
+    - if it crashes the site is down
+    - if it receives a lot of load it slows down

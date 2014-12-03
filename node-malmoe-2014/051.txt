@@ -1,0 +1,6 @@
+
+
+    a BUNCH of datasets have this property (sets, etc)
+    we call these CRDTs
+    
+    https://github.com/dominictarr/crdt

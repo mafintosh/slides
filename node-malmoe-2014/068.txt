@@ -1,0 +1,6 @@
+
+
+    future work:
+    
+    https://github.com/mafintosh/merkle-dag
+    https://github.com/mafintosh/vector-clock-causal-crawling

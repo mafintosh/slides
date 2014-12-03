@@ -1,0 +1,10 @@
+
+
+    - it's not that hard!
+      (use a bunch of npm modules)
+    
+    - your database won't be a blackbox
+      (you know how it replicates etc)
+    
+    - there is a good chance your db will run in the browser (offline first)
+      (all the ones i've shown does)

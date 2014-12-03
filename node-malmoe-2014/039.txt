@@ -1,0 +1,6 @@
+
+
+    solution:
+    
+    send the "head" of ALL local logs when replicating with db1.
+    db1 sends the diff of ALL local logs it has

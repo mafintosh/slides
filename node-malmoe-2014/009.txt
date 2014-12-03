@@ -1,0 +1,5 @@
+
+
+    what if *db* 1 dies?
+    
+    we detect that and elect a new master

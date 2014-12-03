@@ -1,0 +1,3 @@
+
+
+    all of this makes leveldb a great foundation for creating your own database(!)
