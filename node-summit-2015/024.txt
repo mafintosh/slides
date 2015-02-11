@@ -1,0 +1,12 @@
+
+
+    an append-only log is a data structure that looks like this
+    
+    | #1  , entry1 |
+    | #2  , entry2 |
+    | #3  , entry3 |
+    | ... , ...    |
+    | #N  , entryN |
+    
+    
+    a list we never delete from and only append to.

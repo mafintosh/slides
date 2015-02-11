@@ -1,0 +1,4 @@
+
+
+    every db has a local append-only log that is stored in leveldb.
+    everytime you do a mutating operation on the database you append it to the log

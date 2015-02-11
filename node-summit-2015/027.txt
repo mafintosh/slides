@@ -1,0 +1,7 @@
+
+
+    Bobs want to get Alice's log. He fetches all entries (1 to 12) since
+    he didn't know about this log before.
+    
+    Bob: Alice give me entries > #0
+    Alice: Here is alice1, alice2, ...

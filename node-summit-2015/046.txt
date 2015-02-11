@@ -1,0 +1,9 @@
+
+
+    distributed databases to checkout:
+    
+    key value(s) store:
+      https://github.com/mafintosh/multi-master-merge
+
+    merkle dag:
+      https://github.com/mafintosh/hyperlog

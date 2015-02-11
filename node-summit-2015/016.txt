@@ -1,0 +1,4 @@
+
+
+    leveldb is an single process embedded key-value store
+    developed by google

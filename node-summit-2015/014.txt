@@ -1,0 +1,6 @@
+
+
+    can we build a distributed database
+    that doesn't need to elect a master?
+    
+    let's look at some building blocks

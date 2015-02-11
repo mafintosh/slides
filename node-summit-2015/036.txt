@@ -1,0 +1,5 @@
+
+
+    it can replicate based on the Alice/Bob algorithm using a node stream
+    
+      socket.pipe(log.createReplicationStream()).pipe(socket)

@@ -1,0 +1,10 @@
+
+
+    does it support multiple servers?
+    no
+    
+    does it support replication?
+    no
+    
+    does it support join/collections?
+    no

@@ -1,0 +1,6 @@
+
+
+    in general your database shouldn't try to solve conflicts
+    
+    it is up to the user of your database!
+    every conflict scenario is different

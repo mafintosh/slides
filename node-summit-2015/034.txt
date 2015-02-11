@@ -1,0 +1,6 @@
+
+
+    db1's append-only log now looks like
+    
+    | #1 , {type: 'put', key: 'hello', value: 'world'}  |
+    | #2 , {type: 'put', key: 'hej',   value: 'verden'} |

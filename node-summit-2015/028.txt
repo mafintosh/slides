@@ -1,0 +1,6 @@
+
+
+    The next time he want Alice's log he asks for all entries after 12.
+    This way he only receives entries he doesn't know about. 
+    
+    Bob: Alice give me entries > #12

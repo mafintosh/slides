@@ -1,0 +1,6 @@
+
+
+    what if two nodes in our key/value datastore wrote to the same key at
+    the same time with different values?
+    
+    can we solve this somehow?

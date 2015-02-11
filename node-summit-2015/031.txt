@@ -1,0 +1,10 @@
+
+
+    ##########   ##########   ##########
+    #        #   #        #   #        #
+    #  db 1  #   #  db 2  #   #  db 3  #
+    #        #   #        #   #        #
+    ##########   ##########   ##########
+    
+    anyone can write to any database at any time!
+    (not just to a master)

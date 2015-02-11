@@ -1,0 +1,18 @@
+{
+  "name": "node-summit-2015",
+  "version": "1.0.0",
+  "description": "my talk from node summit 2015.",
+  "main": "database.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concat-stream": "^1.4.7",
+    "level": "^0.18.0",
+    "minimist": "^1.1.0",
+    "request": "^2.53.0",
+    "scuttleup": "^3.1.0"
+  }
+}

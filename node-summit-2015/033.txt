@@ -1,0 +1,4 @@
+
+
+    db1.put(hello, world)
+    db1.put(hej, verden)

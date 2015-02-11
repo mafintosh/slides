@@ -1,0 +1,10 @@
+
+
+    we DON'T even need a fully connected network as nodes
+    forward eachothers logs (there just need to be a path between everybody)
+    
+         db1
+        /   \
+       db2  db3
+             |
+            db4

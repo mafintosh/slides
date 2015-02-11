@@ -1,0 +1,3 @@
+
+
+    scuttleup is a node module that implements append-only logs

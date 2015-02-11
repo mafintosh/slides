@@ -1,0 +1,9 @@
+
+
+    Alice has an append only log. It has 12 entries.
+    Only Alice can write to this log.
+    
+    | #1   , alice1  |
+    | #2   , alice2  |
+    | ...  , ...     |
+    | #12  , alice12 |
