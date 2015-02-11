@@ -1,0 +1,331 @@
+
+good artists copy
+great artists replicate
+
+----
+
+Mathias Buus
+@mafintosh
+
+----
+
+node.js developer
+works on a open source project called dat
+
+----
+
+TL;DR mathias builds a distributed database on stage
+
+----
+
+*ACT 1*
+
+the problem
+
+----
+
+you have a single database.
+
+##########
+#        #
+#  db 1  #
+#        #
+##########
+
+it contains all your data
+
+----
+
+having a single server database is a bad idea
+
+- if it blows up the data is gone
+- if it crashes the site is down
+- if it receives a lot of load it slows down
+
+----
+
+solution: replicate the database to more servers.
+all servers should have the same data.
+
+##########   ##########   ##########
+#        #   #        #   #        #
+#  db 1  #   #  db 2  #   #  db 3  #
+#        #   #        #   #        #
+##########   ##########   ##########
+
+----
+
+how/where do we write data?
+
+
+##########   ##########   ##########
+#        #   #        #   #        #
+#  db 1  #   #  db 2  #   #  db 3  #
+#        #   #        #   #        #
+##########   ##########   ##########
+
+
+----
+
+the classic generic solution: elect a *master*
+
+
+############   ##########   ##########
+#          #   #        #   #        #
+#  *db 1*  #   #  db 2  #   #  db 3  #
+#          #   #        #   #        #
+############   ##########   ##########
+
+*db 1* is now master.
+all writes goes to him and he tells everyone else
+
+----
+
+what if *db* 1 dies?
+
+
+############   ##########   ##########
+#          #   #        #   #        #
+#  * :( *  #   #  db 2  #   #  db 3  #
+#          #   #        #   #        #
+############   ##########   ##########
+
+
+we try to detect that and elect a new master
+
+----
+
+detect ..?
+
+----
+
+elect new master ..?
+
+----
+
+how do we even scale writes ..?
+
+----
+
+can we build a distributed database
+that doesn't need to elect a master?
+
+let's look at some building blocks
+
+----
+
+*ACT 2*
+
+leveldb as a building block
+
+----
+
+leveldb is an single process embedded key-value store
+developed by google
+
+----
+
+does it support multiple servers?
+no
+
+does it support replication?
+no
+
+does it support join/collections?
+no
+
+----
+
+leveldb is GREAT because it does very little
+
+----
+
+... and that little it does, it does VERY good
+
+----
+
+it supports
+
+  put(key, value)
+  del(key)
+  get(key)
+  range(key1, key2)
+
+----
+
+mathias, show a demo of leveldb
+
+----
+
+need "collections"?
+subleveldown
+
+need it in the browser?
+level.js
+
+need a file system in the browser
+level-filesystem
+
+----
+
+*ACT 3*
+
+append-only log data structures as a building block
+
+----
+
+an append-only log is a data structure that looks like this
+
+| #1  , entry1 |
+| #2  , entry2 |
+| #3  , entry3 |
+| ... , ...    |
+| #N  , entryN |
+
+
+a list we never delete from and only append to.
+
+----
+
+append-only logs are great because they are easy to replicate.
+
+----
+
+Alice has an append only log. It has 12 entries.
+Only Alice can write to this log.
+
+| #1   , alice1  |
+| #2   , alice2  |
+| ...  , ...     |
+| #12  , alice12 |
+
+----
+
+Bobs want to get Alice's log. He fetches all entries (1 to 12) since
+he didn't know about this log before.
+
+Bob: Alice give me entries > #0
+Alice: Here is alice1, alice2, ...
+
+----
+
+The next time he want Alice's log he asks for all entries after 12.
+This way he only receives entries he doesn't know about. 
+
+Bob: Alice give me entries > #12
+
+----
+
+*ACT 4*
+
+building your own database
+
+----
+
+... that replicates without electing a master! :)
+
+----
+
+##########   ##########   ##########
+#        #   #        #   #        #
+#  db 1  #   #  db 2  #   #  db 3  #
+#        #   #        #   #        #
+##########   ##########   ##########
+
+anyone can write to any database at any time!
+(not just to a master)
+
+----
+
+every db has a local append-only log that is stored in leveldb.
+everytime you do a mutating operation on the database you append it to the log
+
+----
+
+db1.put(hello, world)
+db1.put(hej, verden)
+
+----
+
+db1's append-only log now looks like
+
+| #1 , {type: 'put', key: 'hello', value: 'world'}  |
+| #2 , {type: 'put', key: 'hej',   value: 'verden'} |
+
+----
+
+scuttleup is a node module that implements append-only logs
+
+----
+
+it can replicate based on the Alice/Bob algorithm using a node stream
+
+  socket.pipe(log.createReplicationStream()).pipe(socket)
+
+----
+
+mathias, implement a key/value database
+
+----
+
+*ACT 5*
+
+I CAN'T BELIEVE I STILL HAVE MORE TIME!
+
+----
+
+we DON'T even need a fully connected network as nodes
+forward eachothers logs (there just need to be a path between everybody)
+
+     db1
+    /   \
+   db2  db3
+         |
+        db4
+
+----
+
+the trade-off is there is NO guarantee of ordering between logs
+
+(db1's log might arrive before db2's etc)
+
+----
+
+what if two nodes in our key/value datastore wrote to the same key at
+the same time with different values?
+
+can we solve this somehow?
+
+----
+
+YES! just support a 'merge' strategy
+
+----
+
+mathias, implement 'merge' using timestamps
+
+----
+
+relying on datestamps can be a bad thing though
+
+- clocks are not necessarily in sync
+- we get implicit overrides
+  (you might insert a key and have it overriden without warning by someone else)
+
+----
+
+in general your database shouldn't try to solve conflicts
+
+it is up to the user of your database!
+every conflict scenario is different
+
+----
+
+distributed databases to checkout:
+
+key value(s) store: https://github.com/mafintosh/multi-master-merge
+merkle dag        : https://github.com/mafintosh/hyperlog
+
+----
+
+thank you!
