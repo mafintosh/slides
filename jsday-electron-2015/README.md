@@ -70,4 +70,8 @@
 
 ----
 
+![coding-time.png](coding-time.png)
+
+----
+
 ![questions.png](questions.png)
