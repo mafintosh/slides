@@ -62,6 +62,10 @@
 
 ----
 
+![npm-install.png](npm-install.png)
+
+----
+
 ![coding-time.png](coding-time.png)
 
 ----
