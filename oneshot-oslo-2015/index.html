@@ -1,0 +1,277 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /><style type='text/css'>
+body {
+  font-family:'Helvetica';
+  letter-spacing:-5px;
+  background:#fff;
+  background-size:100%;
+  color:#000;
+  margin:0;
+  padding:0;
+  font-weight:bold;
+}
+
+h1, h2, h3, p {
+  margin:0;
+}
+
+em, a {
+  font-style:normal;
+  color:#57539E;
+}
+
+a {
+  background:#34d0e7;
+  color:#000;
+  text-decoration:none;
+}
+
+img {
+  width:100%;
+}
+
+div {
+  cursor:pointer;
+  cursor:hand;
+  position:absolute;
+  top:0px;
+  left:0px;
+  padding:75px;
+  line-height:97%;
+}
+
+div.center {
+  text-align:center;
+}
+
+div.imageText {
+  text-shadow:0px 0px 5px rgba(0,0,0,0.2);
+}
+
+notes {
+    display:none;
+}
+</style><script type='text/javascript'>
+window.onload = function() {
+    var s = document.getElementsByTagName('div'), ti;
+    if (!s) return;
+    var big = { current: 0, forward: fwd, reverse: rev, go: go, length: s.length };
+    window.big = big;
+    function resize() {
+        var w = window.innerWidth, h = window.innerHeight, e = s[big.current];
+        e.style.fontSize = h + 'px';
+        for (var i = h - 2; e.offsetWidth > w || e.offsetHeight > h; i -= 2) {
+            e.style.fontSize = i + 'px';
+        }
+        e.style.marginTop = ((h - e.offsetHeight) / 2) + 'px';
+    }
+    function go(n) {
+        big.current = n;
+        var e = s[n], t = parseInt(e.getAttribute('data-timeToNext') || 0, 10),
+            notes = e.getElementsByTagName('notes');
+        document.body.className = e.getAttribute('data-bodyclass') || '';
+        for (var k = 0; k < s.length; k++) s[k].style.display = 'none';
+        e.style.display = 'inline';
+        for (k = 0; typeof console === 'object' && k < notes.length; k++) console.log('%c%s: %s', 'padding:5px;font-family:serif;font-size:18px;line-height:150%;', n, notes[k].innerHTML.trim());
+        if (e.firstChild && e.firstChild.nodeName === 'IMG') {
+            document.body.style.backgroundImage = 'url("' + e.firstChild.src + '")';
+            e.firstChild.style.display = 'none';
+            if ('classList' in e) e.classList.add('imageText');
+        } else {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundColor = e.style.backgroundColor;
+        }
+        if (ti !== undefined) window.clearInterval(ti);
+        if (t > 0) ti = window.setTimeout(fwd, (t * 1000));
+        resize();
+        if (window.location.hash !== n) window.location.hash = n;
+        document.title = e.textContent || e.innerText;
+    }
+    document.onclick = function() { go(++big.current % (s.length)); };
+    function fwd() { go(Math.min(s.length - 1, ++big.current)); }
+    function rev() { go(Math.max(0, --big.current)); }
+    document.onkeydown = function(e) {
+        if (e.which === 39 || e.which === 34 || e.which === 40) fwd();
+        if (e.which === 37 || e.which === 33 || e.which === 38) rev();
+    };
+    document.ontouchstart = function(e) {
+        var x0 = e.changedTouches[0].pageX;
+        document.ontouchend = function(e2) {
+            var x1 = e2.changedTouches[0].pageX;
+            if (x1 - x0 < 0) fwd();
+            if (x1 - x0 > 0) rev();
+        };
+    };
+    function parse_hash() {
+        return Math.max(Math.min(s.length - 1,
+            parseInt(window.location.hash.substring(1), 10)), 0);
+    }
+    if (window.location.hash) big.current = parse_hash() || big.current;
+    window.onhashchange = function() {
+        var c = parse_hash();
+        if (c !== big.current) go(c);
+    };
+    window.onresize = resize;
+    go(big.current);
+};
+</script></head><body>
+
+<div>rethinking deployment</div>
+
+<div>for the <em><i>future</i></em> \o/</div>
+
+<div>@<em>mafintosh</em></div>
+
+<div>what is <em>deployment</em>?</div>
+
+<div>copy an <em>app</em> from <em>your</em> machine to <em>another</em> machine and run it</div>
+
+<div>the <em>present</em></div>
+
+<div>
+  <code style="white-space: nowrap">cd my-app</code><br>
+  <code style="white-space: nowrap">tar cz . | ssh remote.com 'tar xz'</code><br>
+  <code style="white-space: nowrap">ssh remote.com</code><br>
+  <code style="white-space: nowrap">npm install</code><br>
+  <code style="white-space: nowrap">npm start</code><br>
+</div>
+
+<div>
+  if we change <em>1%</em> we still resend <em>100%</em>
+</div>
+
+<div>
+  :(
+</div>
+
+<div>
+  <code style="white-space: nowrap">git add .</code><br>
+  <code style="white-space: nowrap">git push remote.com</code><br>
+  <code style="white-space: nowrap">ssh remote.com</code><br>
+  <code style="white-space: nowrap">npm install</code><br>
+  <code style="white-space: nowrap">npm start</code><br>
+</div>
+
+<div>
+  <code style="white-space: nowrap">git add .</code><br>
+  <code style="white-space: nowrap">git push remote.com</code><br>
+  <code style="white-space: nowrap">ssh remote.com</code><br>
+  <code style="white-space: nowrap"><em>npm install</em></code><br>
+  <code style="white-space: nowrap">npm start</code><br>
+</div>
+
+<div>
+  <em>npm install</em> can be nondeterministic
+</div>
+
+<div>
+<pre><code>{
+  <em>"name"</em>: <em>"my-app"</em>,
+  <em>"scripts"</em>: {
+    <em>"install"</em>: <em>"do-stuff-maybe"</em>
+  }
+}</code></pre>
+</div>
+
+<div>
+  <code style="white-space: nowrap"><em>npm install</em></code><br>
+  <code style="white-space: nowrap">git add .</code><br>
+  <code style="white-space: nowrap">git push remote.com</code><br>
+  <code style="white-space: nowrap">ssh remote.com</code><br>
+  <code style="white-space: nowrap">npm start</code><br>
+</div>
+
+<div>
+  no modules with native bindings
+</div>
+
+<div>
+  :(
+</div>
+
+<div>
+  docker to the rescue
+</div>
+
+<div>
+  put the <em>entire</em> os into a <em>container</em>
+</div>
+
+<div>
+  <code style="white-space: nowrap">cd my-app</code><br>
+  <code style="white-space: nowrap">docker build .</code><br>
+  <code style="white-space: nowrap"><em>docker push</em></code><br>
+</div>
+
+<div>
+  <code style="white-space: nowrap">docker push <em>hub.docker.io?!</em></code><br>
+</div>
+
+<div>
+  <code style="white-space: nowrap">machine-1 # <em>docker build</em></code><br>
+  <code style="white-space: nowrap">machine-1 # <em>docker push</em></code><br>
+  <br>
+  <code style="white-space: nowrap">machine-2 # <em>docker build</em></code><br>
+  <code style="white-space: nowrap">machine-2 # <em>docker push</em></code><br>
+</div>
+
+<div>
+  everything is pushed <em><i>twice</i></em>
+</div>
+
+<div>
+  :(
+</div>
+
+<div>
+  the <em>future</em>
+</div>
+
+<div>
+  container <em>snapshots</em>
+</div>
+
+<div>
+  <code style="white-space: nowrap"><i>install ubuntu</i></code><br>
+  <code style="white-space: nowrap"><em>snapshot</em></code><br>
+  <code style="white-space: nowrap"><i>install dependencies</i></code><br>
+  <code style="white-space: nowrap"><em>snapshot</em></code><br>
+  <code style="white-space: nowrap"><i>add app</i></code><br>
+  <code style="white-space: nowrap"><i>build app</i></code><br>
+  <code style="white-space: nowrap"><em>snapshot</em></code><br>
+</div>
+
+<div>
+  everysnap <em>snapshot</em> is a merkle tree of the changed files
+</div>
+
+<div>
+  <img src="merkle-tree.png">
+</div>
+
+<div>
+  every <em>snapshot</em> points to the previous <em>snapshot</em>
+</div>
+
+<div>
+  <img src="hyperfs-graph.png">
+</div>
+
+<div>
+  replicate by sharing the graph diff
+</div>
+
+<div>
+  <img src="hash-the-planet.png">
+</div>
+
+<div>
+  <img src="hyperfs-logo.png">
+</div>
+
+<div>
+  :)
+</div>
+
+<div>
+  tak
+</div>
