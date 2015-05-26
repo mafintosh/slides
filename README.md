@@ -1,1 +1,16 @@
 my talks yo
+
+- [dtn-2015](http://mafintosh.github.io/slides/dtn-2015/) 2015-05-24 (video)
+- [oneshot-oslo-2015](http://mafintosh.github.io/slides/oneshot-oslo-2015) 2015-05-23 (video)
+- [jsday-fuse-2015](https://github.com/mafintosh/slides/blob/gh-pages/jsday-fuse-2015/README.md)
+- [jsday-electron-2015](https://github.com/mafintosh/slides/blob/gh-pages/jsday-electron-2015/README.md)
+- [node-summit-2015](https://github.com/mafintosh/slides/blob/gh-pages/node-summit-2015/all.txt)
+- [webrebels-2014](https://github.com/mafintosh/slides/blob/gh-pages/webrebels-2014/slides.md) ([video](https://vimeo.com/98416593))
+- [oneshot-budapest-2014](http://mafintosh.github.io/slides/oneshot-budapest-2014/oneshot-budapest-2014.html) ([video](https://www.youtube.com/watch?v=V9knGfbHID8))
+- [node-malmoe-2014](https://github.com/mafintosh/slides/tree/gh-pages/node-malmoe-2014)
+- [jsdc-2014](http://mafintosh.github.io/slides/jsdc-2014/jsdc-tw-2014.html#13) ([video](https://www.youtube.com/watch?v=NxfKq27PaM0))
+- [jsconfeu-2014](http://mafintosh.github.io/slides/jsconf-2014/jsconf-eu-2014.html) ([video](https://www.youtube.com/watch?v=BTCsSwCpGP8))
+- [devops-opbeat-2014](https://github.com/mafintosh/slides/blob/gh-pages/devops-opbeat-2014/slides.txt)
+- [copenhagen-js-august-2014](https://github.com/mafintosh/slides/tree/gh-pages/copenhagen-js-august-2014)
+- [coldfront-2014](http://mafintosh.github.io/slides/coldfront-2014/coldfront-2014.html#0)
+- [campjs-2014](http://mafintosh.github.io/slides/campjs-2014/campjs-2014.html#0) ([video](https://www.youtube.com/watch?v=GU6_xZf_QEc))
