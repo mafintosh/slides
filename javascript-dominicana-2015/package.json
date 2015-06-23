@@ -1,0 +1,16 @@
+{
+  "name": "streams-peers-distributed-systems",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "ndjson": "^1.4.1",
+    "duplexify": "^3.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
