@@ -1,0 +1,262 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /><style type='text/css'>
+body {
+  font-family:'Helvetica';
+  letter-spacing:-5px;
+  background:#fff;
+  background-size:100%;
+  color:#000;
+  margin:0;
+  padding:0;
+  font-weight:bold;
+}
+
+h1, h2, h3, p {
+  margin:0;
+}
+
+em, a {
+  font-style:normal;
+  color:#4268BC;
+}
+
+a {
+  background:#EC8E8E;
+  color:#000;
+  text-decoration:none;
+}
+
+img {
+  width: 100%;
+}
+
+div {
+  cursor:pointer;
+  cursor:hand;
+  position:absolute;
+  top:0px;
+  left:0px;
+  padding:75px;
+  line-height:97%;
+}
+
+div.center {
+  text-align:center;
+}
+
+div.imageText {
+  text-shadow:0px 0px 5px rgba(0,0,0,0.2);
+}
+
+notes {
+    display:none;
+}
+</style><script type='text/javascript'>
+window.onload = function() {
+    var s = document.getElementsByTagName('div'), ti;
+    if (!s) return;
+    var big = { current: 0, forward: fwd, reverse: rev, go: go, length: s.length };
+    window.big = big;
+    function resize() {
+        var w = window.innerWidth, h = window.innerHeight, e = s[big.current];
+        e.style.fontSize = h + 'px';
+        for (var i = h - 2; i >= 0 && (e.offsetWidth > w || e.offsetHeight > h); i -= 2) {
+            e.style.fontSize = i + 'px';
+        }
+        e.style.marginTop = ((h - e.offsetHeight) / 2) + 'px';
+    }
+    function go(n) {
+        big.current = n;
+        var e = s[n], t = parseInt(e.getAttribute('data-timeToNext') || 0, 10),
+            notes = e.getElementsByTagName('notes');
+        document.body.className = e.getAttribute('data-bodyclass') || '';
+        for (var k = 0; k < s.length; k++) s[k].style.display = 'none';
+        e.style.display = 'inline';
+        for (k = 0; typeof console === 'object' && k < notes.length; k++) console.log('%c%s: %s', 'padding:5px;font-family:serif;font-size:18px;line-height:150%;', n, notes[k].innerHTML.trim());
+        if (e.firstChild && e.firstChild.nodeName === 'IMG') {
+            document.body.style.backgroundImage = 'url("' + e.firstChild.src + '")';
+            e.firstChild.style.display = 'none';
+            if ('classList' in e) e.classList.add('imageText');
+        } else {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundColor = e.style.backgroundColor;
+        }
+        if (ti !== undefined) window.clearInterval(ti);
+        if (t > 0) ti = window.setTimeout(fwd, (t * 1000));
+        resize();
+        if (window.location.hash !== n) window.location.hash = n;
+        document.title = e.textContent || e.innerText;
+    }
+    document.onclick = function() { go(++big.current % (s.length)); };
+    function fwd() { go(Math.min(s.length - 1, ++big.current)); }
+    function rev() { go(Math.max(0, --big.current)); }
+    document.onkeydown = function(e) {
+        if (e.which === 39 || e.which === 34 || e.which === 40) fwd();
+        if (e.which === 37 || e.which === 33 || e.which === 38) rev();
+    };
+    document.ontouchstart = function(e) {
+        var x0 = e.changedTouches[0].pageX;
+        document.ontouchend = function(e2) {
+            var x1 = e2.changedTouches[0].pageX;
+            if (x1 - x0 < 0) fwd();
+            if (x1 - x0 > 0) rev();
+        };
+    };
+    function parse_hash() {
+        return Math.max(Math.min(s.length - 1,
+            parseInt(window.location.hash.substring(1), 10)), 0);
+    }
+    if (window.location.hash) big.current = parse_hash() || big.current;
+    window.onhashchange = function() {
+        var c = parse_hash();
+        if (c !== big.current) go(c);
+    };
+    window.onresize = resize;
+    go(big.current);
+};
+</script></head><body>
+
+<div>
+  <img src="title.png">
+</div>
+
+<div>
+  <img src="me.png">
+</div>
+
+<div>
+  <img src="dat.png">
+</div>
+
+<div>
+  <img src="act-1.png">
+</div>
+
+<div>
+  lets build a <em>p2p multiplayer</em> game
+</div>
+
+<div>
+  <em>rock</em>, <em>paper</em>, <em>scissors</em> is a great game
+</div>
+
+<div>
+  <img src="rock-paper-scissors.png">
+</div>
+
+<div>
+  <img src="paper-rock.png">
+</div>
+
+<div>
+  <img src="paper-rock-beats.png">
+</div>
+
+<div>
+  <img src="paper-scissors.png">
+</div>
+
+<div>
+  <img src="paper-scissors-beats.png">
+</div>
+
+<div>
+  <img src="scissors-rock.png">
+</div>
+
+<div>
+  <img src="scissors-rock-beat.png">
+</div>
+
+<div>
+  mathias, <em>show this</em>
+</div>
+
+<div>
+  not really <em>multiplayer</em> though
+</div>
+
+<div>
+  use <em>tcp</em> to make it <em>multiplayer</em>
+</div>
+
+<div>
+  easily <em>hackable</em> :(
+</div>
+
+<div>
+  <img src="troll.png">
+</div>
+
+<div>
+  <img src="crypto-troll.png">
+</div>
+
+<div>
+  we can now play <em>securely</em> with friends over <em>tcp</em>.
+</div>
+
+<div>
+<i>"what about <span style="color: #4268BC">ssl</span>, <span style="color: #4268BC">http?</span>"</i>
+</div>
+
+<div>
+<i>"what about <span style="color: #4268BC">websockets</span>, <span style="color: #4268BC">webrtc</span>, or <span style="color: #4268BC">amazing-future-protocol</span>?"</i>
+</div>
+
+<div>
+  <img src="troll.png">
+</div>
+
+<div>
+  <img src="act-2.png">
+</div>
+
+<div>
+  our game should work over <i>any</i> <em>stream</em> or <em>pipe</em>
+</div>
+
+<div>
+  mathias, <em>implement this</em>
+</div>
+
+<div>
+  <pre><em>></em> transport <em>|</em> node rock-paper-scissors.js rock <em>|</em> transport</pre>
+</div>
+
+<div>
+  <pre><em>></em> <em>transport</em> <em>|</em> node rock-paper-scissors.js rock <em>|</em> <em>transport</em></pre>
+</div>
+
+<div>
+  <pre><em>></em> npm install -g dupsh</pre>
+  <pre><em>></em> dupsh transport 'node rock-paper-scissors.js rock'</pre>
+</div>
+
+<div>
+  <pre><em>></em> npm install -g dupsh</pre>
+  <pre><em>></em> dupsh <em>transport</em> 'node rock-paper-scissors.js rock'</pre>
+</div>
+
+<div>
+  <img src="act-3.png">
+</div>
+
+<div>
+  mad science <em>p2p pipes</em>
+</div>
+
+<div>
+  <pre>npm install -g <em>airpaste</em></pre>
+</div>
+
+<div>
+  <pre>npm install -g <em>blecat</em></pre>
+</div>
+
+<div>
+  <pre>npm install -g <em>webcat</em></pre>
+</div>
+
+<div>
+  <em>谢谢</em>
+</div>
