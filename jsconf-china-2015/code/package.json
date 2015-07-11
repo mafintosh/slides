@@ -1,0 +1,11 @@
+{
+  "name": "jsconf-china-2015",
+  "version": "1.0.0",
+  "description": "my example code",
+  "dependencies": {
+    "duplexify": "^3.4.2",
+    "minimist": "^1.1.1",
+    "ndjson": "^1.4.1"
+  },
+  "devDependencies": {}
+}
