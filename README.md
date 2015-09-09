@@ -1,5 +1,6 @@
 my talks yo
 
+- [nodeconfeu-2015](http://mafintosh.github.io/slides/nodeconfeu-2015/) 2015-09-09 (video)
 - [dtn-2015](http://mafintosh.github.io/slides/dtn-2015/) 2015-05-24 (video)
 - [oneshot-oslo-2015](http://mafintosh.github.io/slides/oneshot-oslo-2015) 2015-05-23 (video)
 - [jsday-fuse-2015](https://github.com/mafintosh/slides/blob/gh-pages/jsday-fuse-2015/README.md)
