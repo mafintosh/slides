@@ -29,6 +29,9 @@ swarm.on('connection', function (socket, id) {
   connections.add(socket)
 })
 
+var seq = 0
+var id = Math.random()
+
 process.stdin.on('data', function (data) {
   connections.forEach(function (socket) {
     var message = data.toString().trim()
