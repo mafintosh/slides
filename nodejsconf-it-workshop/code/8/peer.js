@@ -11,7 +11,7 @@ var swarm = topology(toAddress(me), peers.map(toAddress))
 var connections = streamsSet()
 var received = {}
 
-register(username)
+register(me)
 
 swarm.on('connection', function (socket, id) {
   console.log('info> direct connection to', id)
