@@ -32,5 +32,13 @@ You obviously need to use this module in both the client and the server.
 
 ## Testing.
 
-Open 3 terminals, run "node server.js" on one of them and "node client.js" on the other 2. Clients should be able to chat
-and you should be able to see the nicknames of the clients.
+Open 3 terminals, run 
+
+```
+node server.js
+``` 
+on one of them and 
+```
+node client.js
+```
+on the other 2. Clients should be able to chat and you should be able to see the nicknames of the clients.

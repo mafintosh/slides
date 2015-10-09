@@ -49,5 +49,12 @@ Now, all you need to do is write the message received from one client to the rem
 
 ## Testing
 
-Open 4 terminals, run "node server.js" on one of them and "node client.js" on the other 3. If you write messages from any of the client
-terminals, the other clients should get the messages.
+Open 4 terminals, run 
+```
+node server.js
+``` 
+on one of them and 
+```
+node client.js
+```
+on the other 3. If you write messages from any of the client terminals, the other clients should get the messages.

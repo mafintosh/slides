@@ -16,5 +16,12 @@ to read from stdin and `process.stdout.write` to write to stdout.
 
 ## Testing
 
-Put your code into 2 files, one called "server.js", and the other "client.js". If you run "node server.js" and on another terminal
-"node client.js", when you type "hello" plus enter in the client console, you should get "hello" back on the same terminal.
+Put your code into 2 files, one called "server.js", and the other "client.js". If you run 
+```
+node server.js
+```
+and on another terminal
+```
+node client.js
+``` 
+when you type "hello" plus enter in the client console, you should get "hello" back on the same terminal.
