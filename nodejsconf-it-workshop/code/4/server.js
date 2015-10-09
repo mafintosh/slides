@@ -4,7 +4,7 @@ var streamsSet = require('streams-set')
 var register = require('register-multicast-dns')
 
 var hostname = process.argv[2] || 'anon'
-var clients = streamSet()
+var clients = streamsSet()
 
 var server = net.createServer(function (socket) {
   console.log('new connection')
