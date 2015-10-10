@@ -1,3 +1,4 @@
+require('lookup-multicast-dns/global')
 var net = require('net')
 var jsonStream = require('duplex-json-stream')
 
