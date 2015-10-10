@@ -1,7 +1,7 @@
 require('lookup-multicast-dns/global')
 var topology = require('fully-connected-topology')
 var jsonStream = require('duplex-json-stream')
-var streamsSet = require('streams-set')
+var streamSet = require('stream-set')
 var toPort = require('hash-to-port')
 var register = require('register-multicast-dns')
 
@@ -9,7 +9,7 @@ var me = process.argv[2]
 var peers = process.argv.slice(3)
 
 var swarm = topology(toAddress(me), peers.map(toAddress))
-var connections = streamsSet()
+var connections = streamSet()
 var received = {}
 
 register(me)

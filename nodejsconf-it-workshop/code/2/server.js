@@ -1,7 +1,7 @@
 var net = require('net')
-var streamsSet = require('streams-set')
+var streamSet = require('stream-set')
 
-var clients = streamsSet()
+var clients = streamSet()
 var server = net.createServer(function (socket) {
   console.log('new connection')
   clients.forEach(function (client) {

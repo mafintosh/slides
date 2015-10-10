@@ -1,12 +1,12 @@
 var topology = require('fully-connected-topology')
 var jsonStream = require('duplex-json-stream')
-var streamsSet = require('streams-set')
+var streamSet = require('stream-set')
 
 var me = process.argv[2]
 var peers = process.argv.slice(3)
 
 var swarm = topology(me, peers)
-var connections = streamsSet()
+var connections = streamSet()
 
 swarm.on('connection', function (socket, id) {
   console.log('info> new connection from', id)

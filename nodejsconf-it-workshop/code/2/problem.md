@@ -41,7 +41,7 @@ server.listen(10000)
 The difference in this case is that you are going to have to keep track of different connections to the server, and also keep track
 of clients that disconnect from the server.
 
-Luckily there is a module on npm called [streams-set](https://github.com/mafintosh/streams-set). It keeps track of a list of streams
+Luckily there is a module on npm called [stream-set](https://github.com/mafintosh/stream-set). It keeps track of a list of streams
 and remove streams from the list as they become `closed`. TCP sockets in node, are also streams, so you can use this module to keep
 track of the connections to your server.
 

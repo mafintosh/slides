@@ -1,8 +1,8 @@
 var net = require('net')
 var jsonStream = require('duplex-json-stream')
-var streamsSet = require('streams-set')
+var streamSet = require('stream-set')
 
-var clients = streamsSet()
+var clients = streamSet()
 var server = net.createServer(function (socket) {
   console.log('new connection')
   socket = jsonStream(socket)

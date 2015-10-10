@@ -1,10 +1,10 @@
 var net = require('net')
 var jsonStream = require('duplex-json-stream')
-var streamsSet = require('streams-set')
+var streamSet = require('stream-set')
 var register = require('register-multicast-dns')
 
 var hostname = process.argv[2] || 'anon'
-var clients = streamsSet()
+var clients = streamSet()
 
 var server = net.createServer(function (socket) {
   console.log('new connection')

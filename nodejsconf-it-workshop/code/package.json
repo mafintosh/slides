@@ -10,7 +10,7 @@
     "lookup-multicast-dns": "^1.0.1",
     "register-multicast-dns": "^1.0.1",
     "scuttleup": "^3.3.0",
-    "streams-set": "^1.1.0"
+    "stream-set": "^1.1.0"
   },
   "devDependencies": {},
   "author": "Mathias Buus (@mafintosh) and Eduardo Sorribas (@sorribas)",
