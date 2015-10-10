@@ -75,11 +75,12 @@ this would constitute and infinite chain of messages. But we can build up on tha
 If every peer creates an auto numeric sequence of the messages they send out, every peer can keep track of the
 latest message they have received from a specific peer. 
 
-So for instance, when eduardo sends a message out, he would include a sequence number, so for the fourth message.
-it would be message '3'. When mathias receives it, he stores that in memory as the latest message he received from
-eduardo and sends it back to both watson and eduardo. When eduardo gets it, he ignores it, because he knows
-he already sent that message. Watson, on the other hand, verifies he received message '3' from eduardo for the first
-time, so he sends it back to mafintosh, who, having logged that he already received that message, ignores it.
+So for instance, when eduardo sends a message out, he would include a sequence number, the first one would be number 1,
+the second number 2 the third 3 and so on, so for the fourth message.  it would be message '4'. When mathias receives it,
+he stores that in memory as the latest message he received from eduardo and sends it back to both watson and eduardo. 
+When eduardo gets it, he ignores it, because he knows he already sent that message. Watson, on the other hand, verifies 
+he received message '4' from eduardo for the first time, so he sends it back to mafintosh, who, having logged that he 
+already received that message, ignores it.
 
 There are of course some redundant messages sent, so this protocol is not perfect, but it is a simple way to solve
 the problem.
