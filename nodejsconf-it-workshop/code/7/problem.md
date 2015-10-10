@@ -76,11 +76,13 @@ If every peer creates an auto numeric sequence of the messages they send out, ev
 latest message they have received from a specific peer. 
 
 So for instance, when eduardo sends a message out, he would include a sequence number, the first one would be number 1,
-the second number 2 the third 3 and so on, so for the fourth message.  it would be message '4'. When mathias receives it,
-he stores that in memory as the latest message he received from eduardo and sends it back to both watson and eduardo. 
-When eduardo gets it, he ignores it, because he knows he already sent that message. Watson, on the other hand, verifies 
-he received message '4' from eduardo for the first time, so he sends it back to mafintosh, who, having logged that he 
-already received that message, ignores it.
+the second number 2 the third 3 and so on, so for the fourth message it would be message '4'. When mafintosh receives it,
+he checks that it is newer than the last message he received from eduardo by comparing the sequence numbers. Because it is newer
+he prints it out and sends it forward to all connected peers. When watson receives it he goes through the same process of
+comparison and sends it back to mafintosh. This time, mafintosh compares sequence numbers and determines that he already
+received this message, so he just ignores it.
+
+Note that you only have to store the latest message in order to make the comparison.
 
 There are of course some redundant messages sent, so this protocol is not perfect, but it is a simple way to solve
 the problem.
