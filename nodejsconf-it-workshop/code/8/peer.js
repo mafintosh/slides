@@ -1,3 +1,4 @@
+require('lookup-multicast-dns/global')
 var topology = require('fully-connected-topology')
 var jsonStream = require('duplex-json-stream')
 var streamsSet = require('streams-set')
