@@ -17,6 +17,8 @@ npm install level
 
 You can read the documentation for leveldb here, https://github.com/level/levelup
 
+## Tasks
+
 To complete this excercise you should make a two new programs.
 
 The first one, `put.js` should put the value `world` into the key `hello` and store it
