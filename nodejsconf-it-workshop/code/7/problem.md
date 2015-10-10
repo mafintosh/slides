@@ -1,0 +1,105 @@
+# Fix P2P chat.
+
+So, there is a problem with problem 6.
+
+Run this commands in 3 different terminals.
+
+```
+node peer.js eduardo localhost:3000 localhost:3001
+```
+
+```
+node peer.js mafintosh localhost:3001 localhost:3002
+```
+
+```
+node peer.js watson localhost:3002
+```
+
+If you try to run this you'll notice that eudardo's and watson's messages are not getting to every peer.
+That is because the network is no longer fully connected (we intentionally made it not be). Not all
+p2p networks are going to be fully connected, so we have to find a way to deal with this. 
+
+## Tips
+
+So of course we would build up on the problem 6 solution, here is ours.
+
+```js
+var topology = require('fully-connected-topology')
+var jsonStream = require('duplex-json-stream')
+var streamSet = require('stream-set')
+
+var me = process.argv[2]
+var peers = process.argv.slice(3)
+
+var swarm = topology(me, peers)
+var connections = streamSet()
+var received = {}
+
+swarm.on('connection', function (socket, id) {
+  console.log('info> direct connection to', id)
+
+  socket = jsonStream(socket)
+  socket.on('data', function (data) {
+    if (data.seq <= received[data.from]) return // already received this one
+    received[data.from] = data.seq
+    console.log(data.username + '> ' + data.message)
+    connections.forEach(function (socket) {
+      socket.write(data)
+    })
+  })
+
+  connections.add(socket)
+})
+
+var seq = 0
+var id = Math.random()
+
+process.stdin.on('data', function (data) {
+  connections.forEach(function (socket) {
+    var message = data.toString().trim()
+    socket.write({from: id, seq: seq++, username: me, message: message})
+  })
+})
+```
+
+In the above example the resulting network would be like this
+```
+eduardo <-> mafintosh <-> watson
+```
+
+So there is no direct link between eduardo and watson, but they should be able to send each other messages
+through mafintosh. One could feel tempted to just make the peers send forward every message they receive but
+this would constitute and infinite chain of messages. But we can build up on that.
+
+If every peer creates an auto numeric sequence of the messages they send out, every peer can keep track of the
+latest message they have received from a specific peer. 
+
+So for instance, when eduardo sends a message out, he would include a sequence number, so for the fourth message.
+it would be message '3'. When mathias receives it, he stores that in memory as the latest message he received from
+eduardo and sends it back to both watson and eduardo. When eduardo gets it, he ignores it, because he knows
+he already sent that message. Watson, on the other hand, verifies he received message '3' from eduardo for the first
+time, so he sends it back to mafintosh, who, having logged that he already received that message, ignores it.
+
+There are of course some redundant messages sent, so this protocol is not perfect, but it is a simple way to solve
+the problem.
+
+To do this, you're gonna need a `seq` variable and an `id`. You cannot use the username as an id, since, on restart,
+the seq number would be reset to 0 and your messages won't be received by anybody, so you need to make it a random
+number.
+
+```js
+var seq = 0
+var id = Math.random()
+```
+
+Then you would need to modify the part where you send the message. Along with the message and username, the 
+`seq` number should be sent with each message.
+
+Code also has to be added to ignore message that have already been received (or sent), so the peer should only
+process the message if the message sequence is bigger than the biggest received so far, and when this happens
+the object that tracks received messages sequences should be updated.
+
+## Tesging.
+
+Run the example on the problem definition and it should work now.
