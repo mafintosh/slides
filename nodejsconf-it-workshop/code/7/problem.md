@@ -1,4 +1,4 @@
-# Fix P2P chat.
+# Gossiping P2P Chat.
 
 So, there is a problem with problem 6.
 
@@ -63,7 +63,7 @@ process.stdin.on('data', function (data) {
 })
 ```
 
-In the above example the resulting network would be like this
+In the example at the beginning the resulting network would be like this
 ```
 eduardo <-> mafintosh <-> watson
 ```
@@ -100,6 +100,6 @@ Code also has to be added to ignore message that have already been received (or 
 process the message if the message sequence is bigger than the biggest received so far, and when this happens
 the object that tracks received messages sequences should be updated.
 
-## Tesging.
+## Testing.
 
 Run the example on the problem definition and it should work now.
