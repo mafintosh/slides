@@ -1,3 +1,4 @@
+require('lookup-multicast-dns/global')
 var topology = require('fully-connected-topology')
 var register = require('register-multicast-dns')
 var toPort = require('hash-to-port')
