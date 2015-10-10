@@ -9,13 +9,20 @@ anything with said connection yet, it just says that a new connection has been e
 
 You would run this program and pass a port for it to run, and the ports of the other expected peers.
 
-If 5 instances of the program are running, there should be a connection between any two instances 
+If 5 instances of the program are running, there should be a connection between any two instances
 (i.e. the network should be fully connected).
 
 ## Tips
 
 There is a module on npm called [fully-connected-topology](https://github.com/sorribas/fully-connected-topology), this
 module creates a fully connected network based on a list of addresses. Read the docs and you'll be on your way.
+
+To get a list of peers to connect to inside your program passed as command line arguments you could do the following
+
+``` js
+var me = process.argv[2] // first argument is gonna be your own address
+var peers = process.argv.slice(3) // the rest should be the peers you want to connect to
+```
 
 ## Testing.
 

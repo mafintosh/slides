@@ -19,11 +19,12 @@ swarm.on('connection', function (socket, id) {
   console.log('new connection from', id)
 })
 ```
-The `fully-connected-topology` module has a `forEach` method, which might make sense to send messages
-to each one of the peers you have a connection with.
 
-We're using usernames on this problem, so it makes sense to look back at problem 3 and at how we use
-`duplex-json-stream` for this purpose.
+Similar to problem 3 we want to send messages with a username so you'll probably want to look at how
+you solved that problem to help with this one. Similar to problem 3 you could use `duplex-json-stream`
+to add a protocol and `stream-set` to track the open connections.
+
+You can get the username and the peers to connect to from the command line by doing this
 
 ## Testing
 
@@ -38,7 +39,7 @@ node peer.js mafintosh localhost:3001 localhost:3000 localhost:3002
 ```
 
 ```
-node peer.js watson localhost:3002 localhost:3000 localhost:3001
+node peer.js your-name localhost:3002 localhost:3000 localhost:3001
 ```
 
 The clients should be able to chat between them.
