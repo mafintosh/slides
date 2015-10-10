@@ -21,15 +21,15 @@ module creates a fully connected network based on a list of addresses. Read the 
 
 Run this commands in 3 different terminals.
 
-```js
+```
 node peer.js localhost:3000 localhost:3001 localhost:3002
 ```
 
-```js
+```
 node peer.js localhost:3001 localhost:3000 localhost:3002
 ```
 
-```js
+```
 node peer.js localhost:3002 localhost:3000 localhost:3001
 ```
 
