@@ -29,8 +29,10 @@ var seq = 0
 var id = Math.random()
 
 process.stdin.on('data', function (data) {
+  var message = data.toString().trim()
+  var data = {from: id, seq: seq++, username: me, message: message}
+
   connections.forEach(function (socket) {
-    var message = data.toString().trim()
-    socket.write({from: id, seq: seq++, username: me, message: message})
+    socket.write(data)
   })
 })
