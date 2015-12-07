@@ -1,5 +1,4 @@
-my talks yo
-
+- [dotjs-2015](https://github.com/mafintosh/slides/blob/gh-pages/dotjs-2015/README.md)
 - [nodeconfeu-2015](http://mafintosh.github.io/slides/nodeconfeu-2015/) 2015-09-09 (video)
 - [dtn-2015](http://mafintosh.github.io/slides/dtn-2015/) 2015-05-24 (video)
 - [oneshot-oslo-2015](http://mafintosh.github.io/slides/oneshot-oslo-2015) 2015-05-23 (video)
