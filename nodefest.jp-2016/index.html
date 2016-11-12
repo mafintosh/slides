@@ -1,0 +1,339 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /><style type='text/css'>
+body {
+  font-family:'Helvetica';
+  background:#fff;
+  background-size:100%;
+  color:#000;
+  margin:0;
+  padding:0;
+  font-weight:bold;
+}
+
+h1, h2, h3, p {
+  margin:0;
+}
+
+em, a {
+  font-style:normal;
+  color:#C70025;
+}
+
+a {
+  background:#34d0e7;
+  color:#000;
+  text-decoration:none;
+}
+
+img {
+  width:100%;
+}
+
+body > div {
+  cursor:pointer;
+  cursor:hand;
+  position:absolute;
+  top:0px;
+  left:0px;
+  padding:75px;
+  line-height:97%;
+}
+
+div.center {
+  text-align:center;
+}
+
+div.imageText {
+  text-shadow:0px 0px 5px rgba(0,0,0,0.2);
+}
+
+notes {
+    display:none;
+}
+/* normally not good, but ok in context of full screen directional navigation */
+:focus {
+    outline: 0;
+}
+</style><script type='text/javascript'>
+window.onload = function() {
+  var s = document.querySelectorAll('body > div'), ti, i;
+  var notes = [];
+  for (i = 0; i < s.length; i++) {
+    s[i].setAttribute('tabindex', 0);
+    var noteElements = s[i].getElementsByTagName('notes');
+    notes.push([]);
+    while (noteElements.length) {
+      var note = noteElements[0];
+      notes[i].push(note.innerHTML.trim());
+      note.parentNode.removeChild(note);
+    }
+  }
+  if (!s.length) return;
+  var big = window.big = { current: 0, forward: fwd, reverse: rev, go: go, length: s.length };
+  function resize() {
+    var w = window.innerWidth, h = window.innerHeight, e = s[big.current];
+    e.style.fontSize = h + 'px';
+    function pass(cinch, start) {
+      for (var i = start; i > 0 && (e.offsetWidth > w || e.offsetHeight > h); i -= cinch) {
+        e.style.fontSize = i + 'px';
+      }
+      return i + cinch;
+    }
+    pass(2, pass(5, pass(10, h - 2)));
+    e.style.marginTop = (h - e.offsetHeight) / 2 + 'px';
+  }
+  function go(n) {
+    big.current = n;
+    for (i = 0; typeof console === 'object' && i < notes[n].length; i++) console.log('%c%s: %s', 'padding:5px;font-family:serif;font-size:18px;line-height:150%;', n, notes[n][i]);
+    var e = s[n], t = parseInt(e.getAttribute('data-time-to-next') || 0, 10);
+    document.body.className = e.getAttribute('data-bodyclass') || '';
+    for (i = 0; i < s.length; i++) s[i].style.display = 'none';
+    e.style.display = 'inline';
+    e.focus();
+    if (e.firstChild && e.firstChild.nodeName === 'IMG') {
+      document.body.style.backgroundImage = 'url("' + e.firstChild.src + '")';
+      e.firstChild.style.display = 'none';
+      if ('classList' in e) e.classList.add('imageText');
+    } else {
+      document.body.style.backgroundImage = '';
+      document.body.style.backgroundColor = e.style.backgroundColor;
+    }
+    if (ti !== undefined) window.clearInterval(ti);
+    if (t > 0) ti = window.setTimeout(fwd, t * 1000);
+    resize();
+    if (window.location.hash !== n) window.location.hash = n;
+    document.title = e.textContent || e.innerText;
+  }
+  document.onclick = function(e) { if (e.target.tagName !== 'A') go(++big.current % s.length); };
+  function fwd() { go(Math.min(s.length - 1, ++big.current)); }
+  function rev() { go(Math.max(0, --big.current)); }
+  document.onkeydown = function(e) {
+    if (e.which === 39 || e.which === 34 || e.which === 40) fwd();
+    if (e.which === 37 || e.which === 33 || e.which === 38) rev();
+  };
+  document.ontouchstart = function(e) {
+    var x0 = e.changedTouches[0].pageX;
+    document.ontouchend = function(e2) {
+      var x1 = e2.changedTouches[0].pageX;
+      if (x1 - x0 < 0) fwd();
+      if (x1 - x0 > 0) rev();
+    };
+  };
+  function parse_hash() {
+    return Math.max(Math.min(s.length - 1,
+      parseInt(window.location.hash.substring(1), 10)), 0);
+  }
+  if (window.location.hash) big.current = parse_hash() || big.current;
+  window.onhashchange = function() {
+    i = parse_hash();
+    if (i !== big.current) go(i);
+  };
+  window.onresize = resize;
+  go(big.current);
+};
+</script></head><body>
+
+<div>Putting <em>TV</em> on the <em>Internet</em></div>
+
+<div>using <em>p2p</em> technology</div>
+
+<div>@<em>mafintosh</em></div>
+
+<div><em>Copenhagen</em>, Denmark 🇩🇰</div>
+
+<div><em>Copenhagen</em> has <em>1</em> good 🍜 place 😢</div>
+
+<div>... so now I want to move to <em>Tokyo</em> 😊</div>
+
+<div>I like to watch 📺</div>
+
+<div><em>TV</em> is great because it gives you <em><i>very few</i></em> choices</div>
+
+<div>You just turn it on and <em>watch</em>.</div>
+
+<div>Even better is watching 📺 on your 💻</div>
+
+<div>Then you can watch 📺 while being on the 🚅</div>
+
+<div>Which technology can we use to watch <em>live</em> TV on our computers?</div>
+
+<div>
+  <ul>
+    <li><em>H</em>TTP <em>L</em>ive <em>S</em>treaming
+  </ul>
+  <ul>
+    <li><em>DASH</em></li>
+  </ul>
+</div>
+
+<div>
+  Both use the <em>same</em> idea
+</div>
+
+<div>
+  <span style="white-space: nowrap;"><em>1.</em> Take a live stream of video.</span><br>
+</div>
+
+<div>
+  <span style="white-space: nowrap;"><em>1.</em> Take a live stream of video.</span><br>
+  <span style="white-space: nowrap;"><em>2.</em> Chop it into clips of <em>5-10s</em>.</span><br>
+</div>
+
+<div>
+  <span style="white-space: nowrap;"><em>1.</em> Take a live stream of video.</span><br>
+  <span style="white-space: nowrap;"><em>2.</em> Chop it into clips of <em>5-10s</em>.</span><br>
+  <span style="white-space: nowrap;"><em>3.</em> Put these clips into a <em>playlist</em>.</span><br>
+</div>
+
+<div>
+  Example using <em>HLS</em>
+</div>
+
+<div>
+<pre>
+<em>(a playlist file is stored on http://example.com)</em>
+
+#EXTM3U
+#EXT-X-TARGETDURATION:5
+#EXT-X-MEDIA-SEQUENCE:0
+#EXTINF:5
+0.ts <em>(<-- file with 5 seconds of video)</em>
+
+
+
+
+</pre>
+</div>
+
+<div>
+<pre>
+<em>(it is updated every 5s with new data)           </em>
+
+#EXTM3U
+#EXT-X-TARGETDURATION:5
+#EXT-X-MEDIA-SEQUENCE:0
+#EXTINF:5
+0.ts
+#EXTINF:5
+1.ts <em>(<-- 5 more seconds recorded)</em>
+
+
+</pre>
+</div>
+
+<div>
+<pre>
+<em>(it is updated every 5s with new data)           </em>
+
+#EXTM3U
+#EXT-X-TARGETDURATION:5
+#EXT-X-MEDIA-SEQUENCE:0
+#EXTINF:5
+0.ts
+#EXTINF:5
+1.ts
+#EXTINF:5
+2.ts <em>(<-- 5 more seconds recorded)</em>
+</pre>
+</div>
+
+<div>
+<pre>
+<em>(old data is removed as new comes in)            </em>
+
+#EXTM3U
+#EXT-X-TARGETDURATION:5
+#EXT-X-MEDIA-SEQUENCE:1
+#EXTINF:5
+1.ts
+#EXTINF:5
+2.ts
+#EXTINF:5
+3.ts <em>(<-- 5 more seconds recorded)</em>
+</pre>
+</div>
+
+<div>
+<pre>
+<em>(old data is removed as new comes in)            </em>
+
+#EXTM3U
+#EXT-X-TARGETDURATION:5
+#EXT-X-MEDIA-SEQUENCE:2
+#EXTINF:5
+2.ts
+#EXTINF:5
+3.ts
+#EXTINF:5
+4.ts <em>(<-- 5 more seconds recorded)</em>
+</pre>
+</div>
+
+<div>
+A player will <em>poll</em> the server for a new
+playlist and <em>download and play</em> the video chunks
+</div>
+
+<div>
+DEMO
+</div>
+
+<div>
+You can add multiple qualities as well to get <em>adaptive streaming</em>.
+</div>
+
+<div>
+First play the <em>low quality</em>. Then upgrade to <em>higher quality</em> if available.
+</div>
+
+<div>
+DEMO
+</div>
+
+<div>
+<em>Problem</em>. Bandwidth is expensive 💰.
+</div>
+
+<div>
+Video uses <em>a lot</em> of bandwidth
+</div>
+
+<div>
+<span style="white-space: nowrap; margin-left: 20%; margin-right: 20%;">💸💸💸😔</span>
+</div>
+
+<div>
+What if every <em>client</em> was also sharing the data with other <em>clients</em>?
+</div>
+
+<div>
+<span style="margin-left: 10%; margin-right: 10%;">✨P2P✨</span>
+</div>
+
+<div>
+We need a <i><em style="white-space: nowrap;">real-time</em></i> p2p file sharing network to <em>fix</em> this
+</div>
+
+<div>
+I've built one!
+<pre>
+npm install <em>hyperdrive</em>
+</pre>
+</div>
+
+<div>
+Unlike <em>BitTorrent</em>, <em>hyperdrive</em> lets you add new files.
+</div>
+
+<div>
+<span style="margin: 40%">🆒</span>
+</div>
+
+<div>
+We can use <em>hyperdrive</em> to distribute the live <em>playlist</em> and <em style="white-space: nowrap;">video clips</em>
+</div>
+
+<div>
+<pre>
+npm install <em>hypertv</em>
+</pre>
+</div>
