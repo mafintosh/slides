@@ -1,0 +1,60 @@
+
+building distributed offline websites
+
+----
+
+@mafintosh
+
+----
+
+works on dat
+- a version control system for data
+
+----
+
+we publish a lot of node modules
+
+----
+
+3 person team
+published >750 modules on npm
+
+----
+
+websites are broken
+
+----
+
+if you don't have internet you cannot access them
+
+----
+
+if servers go down you cannot use them
+
+----
+
+:(
+
+----
+
+solution:
+make everything work offline and get rid of servers
+
+----
+
+how?
+
+----
+
+easy!
+we install a lot of node modules
+
+----
+
+demo:
+lets try to code a distributed photo
+sharing website
+
+----
+
+thanks!

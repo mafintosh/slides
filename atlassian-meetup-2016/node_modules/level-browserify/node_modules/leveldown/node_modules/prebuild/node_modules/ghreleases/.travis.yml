@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "2.3"
+  - "1.8"
+  - "1.0"
+  - "0.12"
+  - "0.10"
+branches:
+  only:
+    - master
+notifications:
+  email:
+    - ralphtheninja@riseup.net
+script: npm test
