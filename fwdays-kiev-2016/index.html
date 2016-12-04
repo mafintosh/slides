@@ -53,6 +53,30 @@ div.imageText {
   -webkit-transform-style: preserve-3d;
 }
 
+@keyframes spin {
+  0% {
+    transform:rotate(0deg) scale(1);
+  }
+  50% {
+    transform:rotate(180deg) scale(0.5);
+  }
+  100% {
+    transform:rotate(360deg) scale(1);
+  }
+}
+
+.slide-37 .spin,
+.slide-34 .spin,
+.slide-31 .spin,
+.slide-27 .spin,
+.slide-24 .spin,
+.slide-21 .spin {
+  display: block;
+  animation-name: spin;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+}
+
 .flipped {
   display: inline-block;
   -webkit-transform: rotateY(180deg);
@@ -232,7 +256,7 @@ npm install -g <em>psy</em>
 </div>
 
 <div>
-(demo)
+<span class="spin">(demo)</span>
 </div>
 
 <div>
@@ -244,7 +268,7 @@ npm install <em>taco-nginx</em>
 </div>
 
 <div>
-(demo)
+<span class="spin">(demo)</span>
 </div>
 
 <div>
@@ -256,7 +280,7 @@ npm install -g <em>hyperpipe</em>
 </div>
 
 <div>
-(demo)
+<span class="spin">(demo)</span>
 </div>
 
 <div>
@@ -272,7 +296,7 @@ npm install -g <em>hypername</em>
 </div>
 
 <div>
-(demo)
+<span class="spin">(demo)</span>
 </div>
 
 <div>
@@ -284,7 +308,7 @@ npm install -g <em>hypertail</em>
 </div>
 
 <div>
-(demo)
+<span class="spin">(demo)</span>
 </div>
 
 <div>
@@ -296,7 +320,7 @@ we need to analyse the logs in <em>REALTIME</em>
 </div>
 
 <div style="white-space: nowrap;">
-(live coding time)
+<span class="spin">(live coding time)</span>
 </div>
 
 <div>
