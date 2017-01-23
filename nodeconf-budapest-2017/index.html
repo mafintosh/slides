@@ -1,0 +1,682 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /><style type='text/css'>
+body {
+  font-family:'Helvetica';
+  background:#fff;
+  background-size:100%;
+  color:#000;
+  margin:0;
+  padding:0;
+  font-weight:bold;
+}
+
+h1, h2, h3, p {
+  margin:0;
+}
+
+em, a {
+  font-style:normal;
+  color:#C70025;
+}
+
+a {
+  background:#34d0e7;
+  color:#000;
+  text-decoration:none;
+}
+
+img {
+  width:100%;
+}
+
+body > div {
+  cursor:pointer;
+  cursor:hand;
+  position:absolute;
+  top:0px;
+  left:0px;
+  padding:75px;
+  line-height:97%;
+}
+
+div.center {
+  text-align:center;
+}
+
+div.imageText {
+  text-shadow:0px 0px 5px rgba(0,0,0,0.2);
+}
+
+notes {
+    display:none;
+}
+/* normally not good, but ok in context of full screen directional navigation */
+:focus {
+    outline: 0;
+}
+</style><script type='text/javascript'>
+window.onload = function() {
+  var s = document.querySelectorAll('body > div'), ti, i;
+  var notes = [];
+  for (i = 0; i < s.length; i++) {
+    s[i].setAttribute('tabindex', 0);
+    var noteElements = s[i].getElementsByTagName('notes');
+    notes.push([]);
+    while (noteElements.length) {
+      var note = noteElements[0];
+      notes[i].push(note.innerHTML.trim());
+      note.parentNode.removeChild(note);
+    }
+  }
+  if (!s.length) return;
+  var big = window.big = { current: 0, forward: fwd, reverse: rev, go: go, length: s.length };
+  function resize() {
+    var w = window.innerWidth, h = window.innerHeight, e = s[big.current];
+    e.style.fontSize = h + 'px';
+    function pass(cinch, start) {
+      for (var i = start; i > 0 && (e.offsetWidth > w || e.offsetHeight > h); i -= cinch) {
+        e.style.fontSize = i + 'px';
+      }
+      return i + cinch;
+    }
+    pass(2, pass(5, pass(10, h - 2)));
+    e.style.marginTop = (h - e.offsetHeight) / 2 + 'px';
+  }
+  function go(n) {
+    big.current = n;
+    for (i = 0; typeof console === 'object' && i < notes[n].length; i++) console.log('%c%s: %s', 'padding:5px;font-family:serif;font-size:18px;line-height:150%;', n, notes[n][i]);
+    var e = s[n], t = parseInt(e.getAttribute('data-time-to-next') || 0, 10);
+    document.body.className = e.getAttribute('data-bodyclass') || '';
+    for (i = 0; i < s.length; i++) s[i].style.display = 'none';
+    e.style.display = 'inline';
+    e.focus();
+    if (e.firstChild && e.firstChild.nodeName === 'IMG') {
+      document.body.style.backgroundImage = 'url("' + e.firstChild.src + '")';
+      e.firstChild.style.display = 'none';
+      if ('classList' in e) e.classList.add('imageText');
+    } else {
+      document.body.style.backgroundImage = '';
+      document.body.style.backgroundColor = e.style.backgroundColor;
+    }
+    if (ti !== undefined) window.clearInterval(ti);
+    if (t > 0) ti = window.setTimeout(fwd, t * 1000);
+    resize();
+    if (window.location.hash !== n) window.location.hash = n;
+    document.title = e.textContent || e.innerText;
+  }
+  document.onclick = function(e) { if (e.target.tagName !== 'A') go(++big.current % s.length); };
+  function fwd() { go(Math.min(s.length - 1, ++big.current)); }
+  function rev() { go(Math.max(0, --big.current)); }
+  document.onkeydown = function(e) {
+    if (e.which === 39 || e.which === 34 || e.which === 40) fwd();
+    if (e.which === 37 || e.which === 33 || e.which === 38) rev();
+  };
+  document.ontouchstart = function(e) {
+    var x0 = e.changedTouches[0].pageX;
+    document.ontouchend = function(e2) {
+      var x1 = e2.changedTouches[0].pageX;
+      if (x1 - x0 < 0) fwd();
+      if (x1 - x0 > 0) rev();
+    };
+  };
+  function parse_hash() {
+    return Math.max(Math.min(s.length - 1,
+      parseInt(window.location.hash.substring(1), 10)), 0);
+  }
+  if (window.location.hash) big.current = parse_hash() || big.current;
+  window.onhashchange = function() {
+    i = parse_hash();
+    if (i !== big.current) go(i);
+  };
+  window.onresize = resize;
+  go(big.current);
+};
+</script></head><body>
+
+<div>
+  <em>P2P</em> Service Architecture
+</div>
+
+<div>
+  An Internet of <em>Peers</em>
+</div>
+
+<div>
+  How to create <em>P2P</em> networks that actually <em>work</em>
+</div>
+
+<div>
+  @mafintosh
+</div>
+
+<div>
+  <img src="dat.png">
+</div>
+
+<div>
+  Connecting to servers is <em>easy</em>
+</div>
+
+<div>
+<pre>
+  💻   ➡️ ️ 🖨
+client   server
+</pre>
+</div>
+
+<div>
+🖨 has ip <em>10.4.24.1</em>
+and listens on port <em>10000</em>
+</div>
+
+<div>
+ 💻
+uses tcp to connect to <em>10.4.24.1:10000</em>
+</div>
+
+<div>
+Works because 🖨 has a <em>stable ip</em> and is configured to <em>accept incoming traffic</em>
+</div>
+
+<div>
+Servers are <em>boring</em> though
+</div>
+
+<div>
+<span style="white-space: nowrap;">💥 Single points of failure 💥</span>
+</div>
+
+<div>
+<span style="white-space: nowrap;">💸 Expensive 💸</span>
+</div>
+
+<div>
+<span style="white-space: nowrap;">🙍 Ops 🙍</span>
+</div>
+
+<div>
+<pre>
+💻 ↔️ 💻
+</pre>
+</div>
+
+<div>
+<pre>
+💻 ↔️ 💻
+
+↕️    ↕️
+
+💻 ↔️ 💻
+</pre>
+</div>
+
+<div>
+<pre>
+💻 ↔️ 💻 ↔️ 💻
+
+↕️    ↕️    ↕️
+
+💻 ↔️ 💻 ↔️ 💻
+
+↕️    ↕️    ↕️
+
+💻 ↔️ 💻 ↔️ 💻
+</pre>
+</div>
+
+<div>
+✨P2P✨
+</div>
+
+<div>
+<em>Problem:</em> Connecting to other clients is <em>hard</em>
+</div>
+
+<div>
+<pre>
+🔥🛡
+         <span style="color: transparent;">.</span>
+</pre>
+</div>
+<div>
+
+<pre>
+🔥🛡
+(firewalls)
+</pre>
+</div>
+
+<div>
+🔥🛡 makes sure that only people you have <em>contacted</em> can contact you
+</div>
+
+<div>
+<pre>
+💻➡️   🔥🛡💻
+</pre>
+</div>
+
+<div>
+<pre>
+💻  ➡️ 🔥🛡💻
+</pre>
+</div>
+
+<div>
+<pre>
+💻   💀🔥🛡💻
+</pre>
+</div>
+
+<div>
+🔥🛡 usually lives in a router that has its own ip.
+</div>
+
+<div>
+<pre>
+ifconfig en0 | grep 'inet ' | awk '{print $2}'
+curl ifconfig.io
+</pre>
+</div>
+
+<div>
+Makes it really hard to make <em>P2P tcp</em> connections
+</div>
+
+<div>
+Solution: <em>udp</em>
+</div>
+
+<div>
+<em>udp</em> is great because it is <em>stateless</em>
+</div>
+
+<div>
+when you receive a <em>udp</em> message you get a <em>ip:port</em> to reply back to
+</div>
+
+<div>
+Example
+</div>
+
+<div>
+<pre>
+1. 💻 sends a 🎁 to server ip:port
+
+
+
+
+
+
+
+
+
+
+<span style="color: transparent">firewall will allow reply from server ip:port</span>
+</pre>
+</div>
+
+<div>
+<pre>
+1. 💻 sends a 🎁 to server ip:port
+
+2. 🎁 passes through 🔥🛡
+
+
+
+
+
+
+
+
+<span style="color: transparent">firewall will allow reply from server ip:port</span>
+</pre>
+</div>
+
+<div>
+<pre>
+1. 💻 sends a 🎁 to server ip:port
+
+2. 🎁 passes through 🔥🛡
+
+3. 🔥🛡 will allow reply from server ip:port
+
+
+
+
+
+
+<span style="color: transparent">firewall will allow reply from server ip:port</span>
+</pre>
+</div>
+
+<div>
+<pre>
+1. 💻 sends a 🎁 to server ip:port
+
+2. 🎁 passes through 🔥🛡
+
+3. 🔥🛡 will allow reply from server ip:port
+
+4. 🎁 arrives at server
+
+
+
+
+<span style="color: transparent">firewall will allow reply from server ip:port</span>
+</pre>
+</div>
+
+<div>
+<pre>
+1. 💻 sends a 🎁 to server ip:port
+
+2. 🎁 passes through 🔥🛡
+
+3. 🔥🛡 will allow reply from server ip:port
+
+4. 🎁 arrives at server
+
+5. server replies back
+
+
+<span style="color: transparent">firewall will allow reply from server ip:port</span>
+</pre>
+</div>
+
+<div>
+<pre>
+1. 💻 sends a 🎁 to server ip:port
+
+2. 🎁 passes through 🔥🛡
+
+3. 🔥🛡 will allow reply from server ip:port
+
+4. 🎁 arrives at server
+
+5. server replies back
+
+6. 🔥🛡 allows 🎁 from server ip:port
+<span style="color: transparent">firewall will allow reply from server ip:port</span>
+</pre>
+</div>
+
+<div>
+We can use this to trick 🔥🛡 to allow <em>P2P</em> connections!
+</div>
+
+<div>
+<pre>
+🕳👊
+               <span style="color: transparent;">.</span>
+</pre>
+</div>
+
+<div>
+<pre>
+🕳👊
+(hole punching)
+</pre>
+</div>
+
+<div>
+👩💻 and 👨🏾💻 wants to connect and are behind a 🔥🛡.
+</div>
+
+<div>
+They both know the same server, 🖨
+</div>
+
+<div>
+<pre>
+1. 👩 sends a 🎁 to 🖨 saying she wants to talk to 👨🏾
+
+
+
+
+</pre>
+</div>
+
+<div>
+<pre>
+1. 👩 sends a 🎁 to 🖨 saying she wants to talk to 👨🏾
+
+2. 👩's 🔥🛡 now allow 🎁s from 🖨
+
+
+</pre>
+</div>
+
+<div>
+<pre>
+1. 👩 sends a 🎁 to 🖨 saying she wants to talk to 👨🏾
+
+2. 👩's 🔥🛡 now allow 🎁s from 🖨
+
+3. 🖨 remembers 👩's ip:port
+</pre>
+</div>
+
+<div>
+So now 👩 and 🖨 can talk to eachother
+</div>
+
+<div>
+<pre>
+1. 👨🏾 sends a 🎁 to 🖨 saying he wants to talk to 👩
+
+
+
+
+
+
+
+
+
+
+<span style="color: transparent;">..............................</span>
+</pre>
+</div>
+
+<div>
+<pre>
+1. 👨🏾 sends a 🎁 to 🖨 saying he wants to talk to 👩
+
+2. 👨🏾's 🔥🛡 now allow 🎁s from 🖨
+
+
+
+
+
+
+
+
+<span style="color: transparent;">..............................</span>
+</pre>
+</div>
+
+<div>
+<pre>
+1. 👨🏾 sends a 🎁 to 🖨 saying he wants to talk to 👩
+
+2. 👨🏾's 🔥🛡 now allow 🎁s from 🖨
+
+3. 🖨 messages 👨🏾, 👩's ip:port
+
+
+
+
+
+
+<span style="color: transparent;">..............................</span>
+</pre>
+</div>
+
+<div>
+<pre>
+1. 👨🏾 sends a 🎁 to 🖨 saying he wants to talk to 👩
+
+2. 👨🏾's 🔥🛡 now allow 🎁s from 🖨
+
+3. 🖨 messages 👨🏾, 👩's ip:port
+
+4. 👨🏾 sends a 🎁 to 👩
+
+
+
+
+<span style="color: transparent;">..............................</span>
+</pre>
+</div>
+
+<div>
+<pre>
+1. 👨🏾 sends a 🎁 to 🖨 saying he wants to talk to 👩
+
+2. 👨🏾's 🔥🛡 now allow 🎁s from 🖨
+
+3. 🖨 messages 👨🏾, 👩's ip:port
+
+4. 👨🏾 sends a 🎁 to 👩
+
+5. 👨🏾's 🔥🛡 now allow 🎁s from 👩
+
+
+<span style="color: transparent;">..............................</span>
+</pre>
+</div>
+
+<div>
+<pre>
+1. 👨🏾 sends a 🎁 to 🖨 saying he wants to talk to 👩
+
+2. 👨🏾's 🔥🛡 now allow 🎁s from 🖨
+
+3. 🖨 messages 👨🏾, 👩's ip:port
+
+4. 👨🏾 sends a 🎁 to 👩
+
+5. 👨🏾's 🔥🛡 now allow 🎁s from 👩
+
+6. 👩's 🔥🛡 rejects the 🎁 since she hasn't talked to 👨🏾.
+<span style="color: transparent;">..............................</span>
+</pre>
+</div>
+
+<div>
+So now 👨🏾 can receive messages from 👩
+</div>
+
+<div>
+<pre>
+1. At the same time 🖨 messages 👩, 👨🏾's ip:port.
+
+
+
+
+</pre>
+</div>
+
+<div>
+<pre>
+1. At the same time 🖨 messages 👩, 👨🏾's ip:port.
+
+2. 👩 sends a 🎁 to 👨🏾
+
+
+</pre>
+</div>
+
+<div>
+<pre>
+1. At the same time 🖨 messages 👩, 👨🏾's ip:port.
+
+2. 👩 sends a 🎁 to 👨🏾
+
+3. 👩's 🔥🛡 now allow 🎁s from 👨🏾
+</pre>
+</div>
+
+<div>
+👩 and 👨🏾 can now talk directly to eachother without 🖨
+</div>
+
+<div>
+works on most networks / firewalls
+</div>
+
+<div>
+<span style="white-space: nowrap">npm install -g <em>p2p-test</em></span>
+<br><br>
+<span style="white-space: nowrap">p2p-test description-of-network</span>
+</div>
+
+<div>
+<img src="map.png">
+</div>
+
+<div>
+<img src="australia.jpg">
+</div>
+
+<div>
+<img src="cheetah_p2ptest.png">
+</div>
+
+<div>
+instead of using <em>ports</em> and <em>hostnames</em> we just use <em>names</em>
+to describe our services
+</div>
+
+<div>
+resolve the <em>name</em> to peers using a <em>dht</em>
+</div>
+
+<div>
+<pre>
+<span style="color: gray">// announce ourself to a dht</span>
+dht.announce('service-name')
+
+
+<span style="color: transparent;">-> [host:port, host2:port2, ...]</span>
+
+</pre>
+</div>
+
+<div>
+<pre>
+<span style="color: gray">// announce ourself to a dht</span>
+dht.announce('service-name')
+
+<span style="color: gray">// find other peers as well</span>
+dht.lookup('service-name')
+-> [host:port, host2:port2, ...]
+</pre>
+</div>
+
+<div>
+usually we want <em>streams</em> instead of <em>udp</em> messages
+</div>
+
+<div>
+<em>utp</em> upgrades a <em>udp</em> socket to a reliable <em>stream</em>
+</div>
+
+<div>
+<span style="white-space: nowrap">npm install <em>utp-native</em></span>
+</div>
+
+<div>
+we want to combine <em>utp</em>, <em>hole punching</em> and <em>dht</em> discovery into a single network
+</div>
+
+<div>
+<span style="white-space: nowrap">npm install <em>discovery-swarm</em></span>
+</div>
+
+<div>
+DEMO
+</div>
+
+<div>
+Thanks
+</div>
